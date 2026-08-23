@@ -59,6 +59,26 @@
         "essay": 10
       },
       "available": true
+    },
+    {
+      "id": "전체 범위 1",
+      "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
+      "counts": {
+        "mc": 64,
+        "short": 20,
+        "essay": 12
+      },
+      "available": true
+    },
+    {
+      "id": "전체 범위 2",
+      "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
+      "counts": {
+        "mc": 64,
+        "short": 20,
+        "essay": 12
+      },
+      "available": true
     }
   ]
 }
