@@ -79,6 +79,16 @@
         "essay": 12
       },
       "available": true
+    },
+    {
+      "id": "전체 범위 3",
+      "title": "1-1 AI·ML·DL·지도학습·평가·검증 · 1-2 선형회귀부터 역전파까지 · 2-1 워드 임베딩·RNN·LSTM·Attention·Transformer·사전학습 언어모델 · 2-2 파운데이션 모델·지시/선호 학습·디코딩·프롬프트·평가 · 3-1 CNN·AlexNet·VGG/ResNet/MobileNet·활성화/정규화 · 3-2 VLM·sVLM·온디바이스·LMDeploy·이미지 파운데이션 모델 (37개 소주제별 3문항, 변별력 있는 신규 객관식)",
+      "counts": {
+        "mc": 111,
+        "short": 0,
+        "essay": 0
+      },
+      "available": true
     }
   ]
 }
