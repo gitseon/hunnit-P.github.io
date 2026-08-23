@@ -17,7 +17,6 @@ data/{chapter}.json 을 생성하고 data/manifest.json 을 갱신한다.
   숫자 없는 #/##/### 헤더가 나오면(문제 파싱 이후) -> 이후 전부 appendix 로 수집
 """
 import json
-import random
 import re
 import sys
 import unicodedata
@@ -315,6 +314,22 @@ def fix_bare_math_functions(s):
 
 
 HANGING_SUBSCRIPT_RE = re.compile(r"([A-Za-z])_\(([^()]+)\)")
+CONFUSION_RATIO_RE = re.compile(
+    r"\b(TP|TN|FP|FN)/\\\(((?:TP|TN|FP|FN)\+(?:TP|TN|FP|FN))\\\)"
+)
+ACCURACY_RATIO_RE = re.compile(
+    r"\\\(((?:TP|TN|FP|FN)\+(?:TP|TN|FP|FN))\\\)/(전체)"
+)
+
+
+def normalize_metric_fractions(line):
+    """혼동행렬 비율식을 슬래시 텍스트가 아닌 하나의 LaTeX 분수로 만든다."""
+    line = CONFUSION_RATIO_RE.sub(
+        lambda m: rf"\(\frac{{{m.group(1)}}}{{{m.group(2)}}}\)", line
+    )
+    return ACCURACY_RATIO_RE.sub(
+        lambda m: rf"\(\frac{{{m.group(1)}}}{{\text{{{m.group(2)}}}}}\)", line
+    )
 
 
 def convert_inline_parens(line):
@@ -388,27 +403,10 @@ def normalize_math(text):
             out.append("\\[" + fix_bare_math_functions(join_math_block(block_lines)) + "\\]")
             i = j + 1
         else:
-            out.append(convert_inline_parens(lines[i]))
+            out.append(normalize_metric_fractions(convert_inline_parens(lines[i])))
             i += 1
     return "\n".join(out)
 
-
-def shuffle_choices(chapter_id, item):
-    """
-    소스 자료가 정답을 압도적으로 ①번에 몰아서 써놔서(찍기만 해도 잘 맞는
-    문제), 보기 4개의 순서를 문제별로 결정론적으로 섞어 정답 위치를
-    고르게 분산시킨다. 시드가 (chapter_id, 문제번호) 기반이라 매번 빌드해도
-    같은 문제는 항상 같은 순서로 나온다.
-    """
-    if item["part"] != "mc" or item.get("answerIndex") is None:
-        return
-    if len(item["choices"]) != 4:
-        return
-    rng = random.Random(f"{chapter_id}-{item['id']}")
-    order = [0, 1, 2, 3]
-    rng.shuffle(order)
-    item["choices"] = [item["choices"][k] for k in order]
-    item["answerIndex"] = order.index(item["answerIndex"])
 
 
 def build_chapter(chapter_id: str, problem_path: Path, answer_path: Path):
@@ -435,7 +433,13 @@ def build_chapter(chapter_id: str, problem_path: Path, answer_path: Path):
             letter = a.get("answer_letter")
             item["answerIndex"] = LETTER_INDEX.get(letter, None)
             item["explanation"] = normalize_math(a.get("explanation", ""))
-            shuffle_choices(chapter_id, item)
+            if item["answerIndex"] is None:
+                raise ValueError(f"{chapter_id} {q['id']}번: 객관식 정답 번호를 찾을 수 없습니다.")
+            if item["answerIndex"] >= len(item["choices"]):
+                raise ValueError(
+                    f"{chapter_id} {q['id']}번: 정답 인덱스 {item['answerIndex']}가 "
+                    f"선택지 {len(item['choices'])}개 범위를 벗어났습니다."
+                )
         else:
             item["answerText"] = normalize_math(a.get("explanation", ""))
         merged.append(item)
