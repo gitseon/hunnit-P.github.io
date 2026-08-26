@@ -1,0 +1,1830 @@
+{
+  "id": "4-1",
+  "sections": [
+    {
+      "key": "A",
+      "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+    },
+    {
+      "key": "B",
+      "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+    },
+    {
+      "key": "C",
+      "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+    },
+    {
+      "key": "D",
+      "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+    }
+  ],
+  "counts": {
+    "mc": 100,
+    "short": 0,
+    "essay": 0
+  },
+  "questions": [
+    {
+      "id": 1,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Pre-training과 Post-training의 역할을 가장 정확하게 구분한 것은?",
+      "choices": [
+        "Pre-training은 사람이 원하는 방식으로 응답을 조정하는 단계이고, Post-training은 언어와 지식을 처음부터 새로 배우는 단계이다",
+        "Pre-training은 방대한 텍스트로 언어와 지식을 배우는 단계이고, Post-training은 사람이 원하는 방식으로 대화하게 만드는 단계이다",
+        "Pre-training은 레이블된 지시문 데이터만 사용하는 단계이고, Post-training은 레이블 없는 원시 텍스트만 사용하는 단계이다",
+        "Pre-training은 추론 시 외부 저장소를 조회하는 단계이고, Post-training은 내부 파라미터만으로 답변을 만드는 단계이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-1. 거대 언어 모델의 학습 패러다임]\nPre-training은 방대한 텍스트로 언어와 지식을 배우는 단계이고, Post-training은 사람이 원하는 방식으로 대화하고 안전하며 유용하게 동작하도록 만드는 단계다. ①은 두 단계를 뒤바꾼 설명이고, ③은 사용 데이터를 반대로 서술했다. ④의 외부 저장소 조회는 B챕터의 RAG 개념이다."
+    },
+    {
+      "id": 2,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Pre-training 단계의 대표적인 학습 목표로 옳은 것은?",
+      "choices": [
+        "사람이 매긴 응답 간 선호 순위를 맞추는 Preference Ranking",
+        "자동 채점기가 부여한 이진 보상을 최대화하는 Verifiable Reward",
+        "앞선 토큰들을 보고 다음 토큰을 예측하는 Next Token Prediction",
+        "질의와 문서 임베딩의 유사도를 높이는 Contrastive Learning"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-2. Pre-training]\nPre-training의 대표 학습 목표는 앞선 토큰들을 보고 다음 토큰을 예측하는 Next Token Prediction이다. ①은 RLHF의 선호 비교, ②는 RLVR의 검증 가능한 보상, ④는 B챕터 Bi-encoder의 대조 학습에 해당한다."
+    },
+    {
+      "id": 3,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "\"달 착륙을 6살 어린이에게 설명해줘\"라는 요청에 Pre-trained LM이 답 대신 비슷한 형식의 다른 질문들을 이어서 생성한 이유로 가장 적절한 것은?",
+      "choices": [
+        "모델이 사용자의 의도를 수행하도록 학습된 것이 아니라 다음 토큰을 잘 예측하도록 학습되었기 때문이다",
+        "모델이 학습한 지식의 절대량이 부족해 달 착륙이라는 사건 자체를 전혀 알지 못했기 때문이다",
+        "검색기가 관련 문서를 전혀 찾지 못해 참고할 수 있는 컨텍스트가 비어 있었기 때문이다",
+        "보상 모델이 잘못된 점수를 부여해 학습된 정책이 붕괴하고 응답 품질이 무너졌기 때문이다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-2. Pre-training 후 모델의 한계]\nPre-training만 거친 모델은 사용자의 의도를 수행하도록 학습된 것이 아니라 다음 토큰을 잘 예측하도록 학습되었다. 그래서 질문에 답하는 대신 비슷한 형식의 질문을 이어서 생성한다. 지식의 양이나 검색, 보상 모델과는 관계가 없다."
+    },
+    {
+      "id": 4,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "문서에서 Post-training의 대표 기법으로 제시하지 않은 것은?",
+      "choices": [
+        "Instruction-tuning: 지시문과 응답 쌍으로 지시를 따르도록 학습하는 방식",
+        "RLHF: 사람의 선호 비교를 이용한 강화학습으로 모델을 정렬하는 방식",
+        "RLVR: 자동 검증이 가능한 보상을 이용해 정책을 갱신하는 학습 방식",
+        "Contrastive Learning: 긍정과 부정 문서 쌍으로 임베딩을 학습하는 방식"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-1. Post-training 대표 기법]\n문서가 제시한 Post-training 대표 기법은 Instruction-tuning, RLHF, DPO, RLVR 네 가지다. Contrastive Learning은 B챕터에서 Bi-encoder retriever를 학습할 때 쓰는 방식으로 Post-training 기법이 아니다."
+    },
+    {
+      "id": 5,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Fine-tuning에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "레이블이 없는 대규모 텍스트에서 언어 패턴을 처음부터 학습해 나가는 과정이다",
+        "이미 사전 학습된 모델을 특정 작업이나 도메인에 맞게 추가로 학습시키는 과정이다",
+        "사람이 비교한 선호 데이터를 이용해 보상 모델을 별도로 학습하는 과정이다",
+        "추론 시점에 외부 데이터 저장소를 조회해 컨텍스트를 구성하는 과정이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-4. Fine-tuning]\nFine-tuning은 이미 사전 학습된 기존 모델을 특정 작업이나 도메인에 맞게 추가로 학습시키는 과정이다. ①은 Pre-training, ③은 RLHF의 Reward Model 학습, ④는 RAG의 검색 과정에 해당한다."
+    },
+    {
+      "id": 6,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Instruction-tuning의 정의로 가장 적절한 것은?",
+      "choices": [
+        "언어모델이 사람이 내린 지시문을 따르도록 학습하는 단계이다",
+        "보상 모델의 점수를 최대화하도록 정책을 갱신하는 단계이다",
+        "모델 파라미터를 고정한 채 프롬프트만 바꾸어 성능을 올리는 기법이다",
+        "문서를 청크로 나누어 벡터 저장소에 임베딩해 두는 단계이다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-4. Instruction-tuning이란?]\nInstruction-tuning은 언어모델이 사람이 내린 지시문을 따르도록 학습하는 단계이며 Fine-tuning의 한 종류다. ②는 RLHF의 강화학습 단계, ④는 B챕터 LangChain 기반 RAG의 인덱싱 과정이다."
+    },
+    {
+      "id": 7,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "일반적인 Fine-tuning과 Instruction-tuning의 차이로 가장 적절한 것은?",
+      "choices": [
+        "일반 Fine-tuning은 지시문 데이터만 사용하고 Instruction-tuning은 원시 텍스트만 사용한다",
+        "일반 Fine-tuning은 사람의 선호 비교를 사용하고 Instruction-tuning은 자동 검증 보상을 사용한다",
+        "일반 Fine-tuning은 특정 Task에 맞춰 조정하고 Instruction-tuning은 다양한 Task를 수행하도록 학습한다",
+        "일반 Fine-tuning은 사전학습 없이 처음부터 학습하고 Instruction-tuning은 반드시 사전학습을 전제로 한다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-4. 일반 Fine-tuning과의 차이]\n일반 Fine-tuning은 특정 Task에 맞춰 모델을 조정하는 반면, Instruction-tuning은 다양한 Task의 지시문을 이해하고 수행하도록 학습하며 새로운 형태의 지시에도 일반화하는 것을 목표로 한다."
+    },
+    {
+      "id": 8,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "문서에서 제시한 Instruction-tuning 데이터의 핵심 구조는?",
+      "choices": [
+        "Query - Document - Score",
+        "Instruction - Input - Output",
+        "Observation - Action - Reward",
+        "Host - Client - Server"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-4. Instruction-tuning의 핵심 구조]\n핵심 구조는 Instruction, Input, Output이다. ①은 B챕터 IR의 구성 개념, ③은 C챕터 강화학습 Agent의 요소, ④는 C챕터 MCP 아키텍처의 구성요소다."
+    },
+    {
+      "id": 9,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Super-NaturalInstructions 데이터셋의 규모로 옳은 것은?",
+      "choices": [
+        "약 52K개의 instruction-following 데이터로 구성된다",
+        "약 16,000개 이상의 실제 API로 구성된다",
+        "약 6,000개의 인간 시연 데이터로 구성된다",
+        "약 1.6K개 이상의 task와 3M개 이상의 예시로 구성된다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-5. 많은 Task를 가진 데이터로 학습]\nSuper-NaturalInstructions는 약 1.6K개 이상의 task와 3M개 이상의 예시로 구성된다. ①의 52K는 Alpaca, ②의 16,000+는 C챕터 ToolLLM, ③의 6,000개는 C챕터 WebGPT의 규모다."
+    },
+    {
+      "id": 10,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Instruction-tuning으로 학습한 모델을 평가하는 방식으로 문서가 강조한 것은?",
+      "choices": [
+        "학습하지 않은 새로운 task에서 평가하여 지시 일반화 능력을 확인한다",
+        "학습에 사용한 task에서만 평가하여 수렴 여부를 확인한다",
+        "사람이 두 응답을 비교해 선호 순위를 매기는 방식으로 평가한다",
+        "자동 채점기가 정답 여부를 검증해 이진 점수를 매겨 평가한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-5. 학습 후 평가]\nInstruction-tuning의 목표는 지시 일반화이므로, 학습하지 않은 새로운 task에서 평가해 instruction generalization 능력을 확인한다. ③은 RLHF의 선호 비교, ④는 RLVR의 검증 방식이다."
+    },
+    {
+      "id": 11,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "MMLU에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "16,000개 이상의 실제 API 호출 능력을 평가하는 벤치마크이다",
+        "웹 탐색 에이전트의 과제 성공률을 측정하는 시뮬레이션 환경이다",
+        "57개의 지식을 요구하는 태스크에서 언어모델 성능을 평가하는 벤치마크이다",
+        "검색기가 반환한 문서의 순위 품질을 측정하는 평가 지표이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-6. MMLU]\nMMLU는 57개의 지식을 요구하는 태스크에서 언어모델의 광범위한 지식과 문제 해결 성능을 평가하는 벤치마크다. ①은 ToolLLM 계열, ②는 D챕터의 웹 에이전트 환경에 대한 설명이다."
+    },
+    {
+      "id": 12,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "K-MMLU의 특징으로 가장 적절한 것은?",
+      "choices": [
+        "기존 MMLU 문항을 한국어로 번역만 하여 그대로 사용하도록 만든 벤치마크이다",
+        "한국의 지식 환경에 맞게 구성되어 문화와 지역, 법률 등 한국 특화 지식을 요구한다",
+        "수학과 코딩처럼 정답을 자동 검증할 수 있는 문제만 모아 구성한 벤치마크이다",
+        "사람의 선호 순위를 대규모로 수집하기 위해 만들어진 응답 비교 데이터셋이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-6. K-MMLU]\nK-MMLU는 한국의 지식 환경에 맞게 구성되어 문화, 지역, 법률 등 한국 특화 지식을 요구한다. 단순 번역본이 아니라는 점이 핵심이다. ③은 RLVR이 적용되는 문제 유형, ④는 RLHF의 선호 데이터에 해당한다."
+    },
+    {
+      "id": 13,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Alpaca에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "LLaMA 7B를 기반으로 약 52K개의 instruction-following 데이터로 학습한 모델이다",
+        "GPT-3 175B를 기반으로 약 6,000개의 인간 시연 데이터로 학습시킨 웹 검색 특화 모델이다",
+        "16,000개 이상의 실제 API를 활용해 도구 사용 능력을 학습시킨 대규모 언어모델이다",
+        "1.6K개 이상의 task와 3M개 이상의 예시를 담은 지시문 데이터셋을 구축한 사례이다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-8. Alpaca와 Instruction-following 데이터]\nAlpaca는 LLaMA 7B를 기반으로 약 52K개의 instruction-following 데이터로 Fine-tuning한 모델이다. ②의 6,000개는 WebGPT, ③의 16,000+ API는 ToolLLM, ④는 Super-NaturalInstructions에 해당한다."
+    },
+    {
+      "id": 14,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "Alpaca의 학습 데이터 생성 방식으로 옳은 것은?",
+      "choices": [
+        "사람이 응답 두 개를 비교해 순위를 매기는 방식으로 선호 데이터를 대량 수집했다",
+        "API 호출 후보를 샘플링해 실제로 실행한 뒤 손실로 유용성을 평가해 필터링했다",
+        "질의와 문서를 하나로 결합해 Self-Attention으로 관련성을 계산하는 방식으로 모았다",
+        "강력한 모델과 seed tasks를 이용해 Self-Instruct 방식으로 예시를 대량 생성했다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-8. Alpaca 데이터 생성 흐름]\nAlpaca는 강력한 모델과 기존 seed tasks를 활용해 Modified Self-Instruct Generation 방식으로 약 52K개의 예시를 생성했다. ②는 C챕터 Toolformer의 데이터 생성 방식, ③은 B챕터 Cross-encoder의 계산 방식이다."
+    },
+    {
+      "id": 15,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "Instruction-tuning의 한계로 문서에서 제시하지 않은 것은?",
+      "choices": [
+        "개방형이나 창의적 생성처럼 명확한 정답이 존재하지 않는 task가 있다",
+        "지도학습은 사소한 오류와 치명적인 오류를 동일하게 취급할 수 있다",
+        "외부 저장소를 갱신할 수 없어 최신 정보를 반영하기 어렵다",
+        "사람이 만든 답변이라도 항상 최적의 답변이라는 보장은 없다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-9. Instruction-tuning의 한계]\n문서가 제시한 한계는 정답이 없는 task의 존재, 모든 오류를 동일하게 취급하는 문제, 사람이 만든 답변이 최적이 아닐 수 있다는 점이다. 외부 저장소 갱신 문제는 B챕터에서 RAG의 필요성으로 제시된 내용이다."
+    },
+    {
+      "id": 16,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "\"언어모델이 모든 오류를 동일하게 취급한다\"는 지적이 의미하는 바로 가장 적절한 것은?",
+      "choices": [
+        "정답 레이블이 전혀 없으면 학습 자체가 진행되지 않는다는 뜻이다",
+        "아주 사소한 오류와 치명적인 오류가 같은 loss로 처리될 수 있다는 뜻이다",
+        "검색된 문서에 섞인 노이즈가 답변 품질을 떨어뜨린다는 뜻이다",
+        "보상 모델의 점수와 실제 사람의 선호가 함께 증가해 간다는 뜻이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-9. 문제 2. 모든 오류를 동일하게 취급]\n지도학습 방식은 아주 사소한 오류와 치명적인 오류를 동일한 loss로 처리할 수 있다. 실제 사람의 관점에서는 오류의 심각도가 다르다는 것이 지적의 핵심이다."
+    },
+    {
+      "id": 17,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "LM Objective와 Human Preference 사이에 차이가 생기는 이유로 가장 적절한 것은?",
+      "choices": [
+        "사람이 선호하는 답변은 정확성과 안전성을 포함하는데 토큰 확률만으로는 정의하기 어렵기 때문",
+        "언어모델이 외부 API를 호출할 수 없어 최신 정보를 전혀 얻지 못하는 구조이기 때문",
+        "검색기와 생성기가 서로 다른 데이터로 학습되어 두 목표가 어긋나 버리기 때문",
+        "데이터 계층과 전송 계층의 통신 규격이 호환되지 않아 충돌을 일으키기 때문"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-10. 언어모델의 목적함수와 인간 선호]\n사람이 선호하는 답변은 정확성, 유용성, 관련성, 안전성 등을 포함하는데 다음 토큰 확률을 높이는 목적함수만으로는 이를 정의하기 어렵다. 그래서 LM Objective와 Human Preference 사이에 차이가 생긴다."
+    },
+    {
+      "id": 18,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Human-in-the-loop ML의 기본 흐름으로 옳은 것은?",
+      "choices": [
+        "Query에서 Index를 거쳐 Retrieval과 Generation으로 답변을 만드는 흐름",
+        "API 호출을 샘플링하고 실행한 뒤 필터링해 데이터셋을 만드는 흐름",
+        "Thought와 Action, Observation을 번갈아 반복하는 흐름",
+        "사람이 레이블링하고 모델을 학습한 뒤 헷갈리는 데이터를 골라 다시 사람이 평가하는 흐름"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-12. Human-in-the-loop ML]\n흐름은 사람이 레이블링하고 모델을 학습한 뒤, 헷갈리는 데이터를 골라 다시 사람이 평가하고 이를 반복하는 것이다. ①은 RAG 파이프라인, ②는 Toolformer 데이터 생성, ③은 ReAct 루프에 해당한다."
+    },
+    {
+      "id": 19,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "인간 선호를 반영한 최적화의 목표를 옳게 표현한 것은?",
+      "choices": [
+        "질의와 문서 임베딩 사이의 코사인 유사도를 최대화한다",
+        "모델이 생성하는 응답에 대한 기대 보상을 최대화한다",
+        "클라이언트와 서버 사이의 메시지 왕복 횟수를 최소화한다",
+        "검색된 문서 수를 늘려 컨텍스트 길이를 최대화한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-13. 인간 선호를 반영한 최적화]\n사람이 느끼는 선호도를 보상으로 표현할 수 있다고 가정하면, 모델의 목표는 응답에 대한 기대 보상을 최대화하는 것이 된다."
+    },
+    {
+      "id": 20,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "RLHF의 정의로 가장 적절한 것은?",
+      "choices": [
+        "검증 가능한 자동 채점기로 보상을 계산해 정책을 갱신하는 방식",
+        "강화학습 단계를 제거하고 선호 데이터로 직접 최적화하는 방식",
+        "인간의 피드백을 통해 사람이 선호하는 답변을 생성하도록 학습하는 방식",
+        "지시문과 응답 쌍을 모아 다양한 태스크를 지도학습하는 방식"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-14. RLHF]\nRLHF는 인간의 피드백을 통해 언어모델이 사람이 선호하는 답변을 생성하도록 학습하는 방식이다. ①은 RLVR, ②는 DPO, ④는 Instruction-tuning에 대한 설명이다."
+    },
+    {
+      "id": 21,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 2,
+      "stem": "RLHF 파이프라인의 순서로 옳은 것은?",
+      "choices": [
+        "SFT를 거쳐 비교 데이터를 수집하고 Reward Model을 학습한 뒤 강화학습으로 정책을 최적화한다",
+        "Reward Model을 학습한 뒤 SFT를 하고 비교 데이터를 수집해 강화학습을 수행한다",
+        "비교 데이터를 수집해 강화학습을 먼저 하고 SFT와 Reward Model 학습을 나중에 한다",
+        "SFT를 거쳐 강화학습을 먼저 하고 Reward Model 학습과 비교 데이터 수집을 나중에 한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-15. RLHF 파이프라인]\n순서는 1단계 Instruction-tuning 또는 SFT, 2단계 비교 데이터 수집, 3단계 Reward Model 학습, 4단계 PPO 등 강화학습으로 정책 최적화다. 보상 모델이 있어야 강화학습이 가능하므로 순서가 뒤바뀔 수 없다."
+    },
+    {
+      "id": 22,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "RLHF에서 절대 점수 대신 응답 간 상대 비교를 사용하는 이유로 가장 적절한 것은?",
+      "choices": [
+        "상대 비교가 절대 점수보다 계산 비용이 훨씬 크기 때문",
+        "상대 비교를 쓰면 강화학습 단계를 완전히 제거할 수 있기 때문",
+        "절대 점수로는 검색 결과의 순위를 매길 수 없기 때문",
+        "인간의 절대 점수 평가는 일관성이 낮고 사람마다 기준이 달라지기 때문"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-16. 절대 점수 대신 상대 비교]\n인간의 절대 점수 평가는 일관성이 낮고 사람마다 기준이 다르며 같은 사람도 상황에 따라 달라진다. 그래서 응답 두 개를 비교해 더 나은 답을 고르는 방식을 사용한다. 강화학습 제거는 DPO의 특징이므로 혼동하면 안 된다."
+    },
+    {
+      "id": 23,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Reward Model 학습의 원리로 옳은 것은?",
+      "choices": [
+        "모든 응답에 절대 점수 레이블을 붙여 회귀 문제로 직접 맞춘다",
+        "사람이 더 선호한 응답의 보상이 그렇지 않은 응답의 보상보다 크도록 학습한다",
+        "질의와 문서를 하나의 시퀀스로 결합해 Self-Attention으로 점수를 낸다",
+        "정답이면 1, 아니면 0인 규칙 기반 이진 보상을 그대로 사용한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-17. Reward Model과 Pairwise Comparison]\n사람이 더 선호한 응답의 보상이 그렇지 않은 응답의 보상보다 크도록 학습한다. ①의 절대 점수 회귀는 일관성 문제로 채택되지 않았고, ③은 Cross-encoder, ④는 RLVR의 검증 가능한 보상이다."
+    },
+    {
+      "id": 24,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "Reward Model 사용 시 주의점으로 문서가 지적한 내용은?",
+      "choices": [
+        "정확도는 오르지만 완벽하지 않으며 보상 모델이 잘못되면 강화학습도 잘못된 방향으로 간다",
+        "보상 모델은 항상 인간 평가 수준을 넘어서므로 별도의 검증 절차가 필요하지 않다",
+        "보상 모델은 검색기 성능에 의존하므로 노이즈를 포함한 학습이 반드시 필요하다",
+        "보상 모델은 공통 프로토콜 규격을 따라야 다른 모델에서도 재사용할 수 있다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-20. Reward Model 주의점]\n데이터와 모델 크기가 커지면 validation accuracy는 오르지만 단일 인간 평가 수준에 근접한다고 해서 완벽한 것은 아니다. Reward Model이 잘못되면 이후 강화학습도 잘못된 방향으로 진행된다."
+    },
+    {
+      "id": 25,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "Reward Hacking에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "보상 모델의 점수와 실제 사람의 선호가 함께 꾸준히 증가해 가는 현상",
+        "검색된 문서에 노이즈가 섞여 최종 답변의 품질이 흔들리게 되는 현상",
+        "실제 목표 달성 대신 보상 함수를 공략해 높은 점수를 얻으려 행동하는 현상",
+        "모델의 사전지식과 주어진 컨텍스트가 서로 충돌해 답이 갈리게 되는 현상"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-22. Reward Hacking]\nReward Hacking은 모델이 실제 목표를 달성하는 대신 보상 함수를 공략해 높은 점수를 얻는 방향으로 행동하는 현상이다. ①은 Over-optimization과 반대되는 상황, ②는 B챕터의 검색 노이즈, ④는 B챕터의 Conflict다."
+    },
+    {
+      "id": 26,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "챗봇의 보상 구조가 낳을 수 있는 부작용으로 문서가 지적한 것은?",
+      "choices": [
+        "보상이 지나치게 낮아져 모델이 대부분의 질문에 대해 답변을 거부하게 된다",
+        "길고 자신감 있게 말하는 쪽으로 보상이 연결되어 Hallucination이 생긴다",
+        "검색기가 관련 없는 문서를 우선 반환해 답변의 근거가 크게 흔들리게 된다",
+        "툴 호출 스키마가 모델마다 달라져 같은 툴을 재사용하기 어려워지게 된다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[A-22. Chatbot 보상 구조의 부작용]\n답변을 잘해준다는 보상이 더 길게, 자신감 있게, 그럴듯하게 말하기로 연결될 수 있다. 그 결과 실제 사실 여부와 관계없이 답변을 생성하는 Hallucination이 발생할 수 있다."
+    },
+    {
+      "id": 27,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "Reward Model Over-optimization 현상에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "보상 모델의 점수와 실제 사람의 선호가 항상 비례해 함께 증가한다",
+        "보상 모델을 제거하더라도 강화학습 성능은 그대로 유지될 수 있다",
+        "검증 가능한 보상을 사용하면 보상 모델 학습이 반드시 필요해진다",
+        "보상 모델 점수는 계속 오르지만 실제 사람의 선호는 오히려 감소할 수 있다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[A-22. Reward Model Over-optimization]\nReward Model의 예측 점수는 계속 증가하지만 실제 사람의 preference는 오히려 감소할 수 있다. 보상 모델이 실제 선호의 완전한 대리 지표가 아니기 때문이다."
+    },
+    {
+      "id": 28,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 1,
+      "stem": "DPO의 핵심 아이디어로 옳은 것은?",
+      "choices": [
+        "강화학습 단계를 제거하고 선호 데이터로 언어모델을 직접 최적화한다",
+        "별도의 보상 모델을 반드시 명시적으로 학습한 뒤 정책을 갱신한다",
+        "사람의 피드백을 전혀 쓰지 않고 모델이 스스로 데이터를 만든다",
+        "자동 채점기로 계산한 검증 가능한 보상을 사용해 학습한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[A-23. DPO]\nDPO의 핵심 아이디어는 RLHF에서 강화학습 단계를 제거하는 것이다. 별도의 보상 모델을 명시적으로 학습하지 않고 선택된 답과 거절된 답을 이용해 언어모델을 직접 최적화한다. ③은 Toolformer의 자기지도, ④는 RLVR의 방식이다."
+    },
+    {
+      "id": 29,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "Post-training (Instruction-tuning · RLHF · DPO · RLVR)"
+      },
+      "star": 0,
+      "stem": "RLVR에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "사람의 선호 비교 데이터로 보상 모델을 학습한 뒤 정책을 갱신하는 방식이다",
+        "정답이 존재하지 않는 개방형 창작 문제에 가장 적합하다고 알려진 방식이다",
+        "정답 검증이 가능한 문제에서 Verifier로 보상을 계산하며 DeepSeek-R1이 사례다",
+        "강화학습을 전혀 사용하지 않고 지도학습만으로 모델 정렬을 수행하는 방식이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[A-24. RLVR]\nRLVR은 수학이나 코딩처럼 정답 검증이 가능한 문제에서 Verifier로 보상을 계산하는 방식이며 DeepSeek-R1이 대표적인 성공 사례다. 정답이 없는 개방형 창작 문제와는 오히려 맞지 않는다."
+    },
+    {
+      "id": 30,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Retrieval-Augmented LM의 정의로 가장 적절한 것은?",
+      "choices": [
+        "학습 단계에서 외부 문서를 파라미터에 통합해 저장하는 언어모델이다",
+        "추론 시 외부 데이터 저장소를 불러와 활용하는 언어모델이다",
+        "내부 파라미터만 사용해 모든 답변을 생성하는 언어모델이다",
+        "사람의 선호 비교로 보상 모델을 학습하는 언어모델이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-1. Retrieval-Augmented LM 기본 개념]\nRetrieval-Augmented LM은 추론 시 외부 데이터 저장소를 불러와 활용하는 언어모델이다. 학습 단계에 지식을 통합하는 것이 아니라 test time에 Datastore를 조회한다는 점이 핵심이다."
+    },
+    {
+      "id": 31,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Parametric Knowledge와 Non-parametric Knowledge의 구분으로 옳은 것은?",
+      "choices": [
+        "Parametric은 모델 파라미터 내부의 지식이고 Non-parametric은 외부 저장소의 지식이다",
+        "Parametric은 외부 저장소의 지식이고 Non-parametric은 파라미터 내부의 지식이다",
+        "둘 다 모델 파라미터에 저장되며 갱신 주기와 압축 방식만 서로 다르다",
+        "둘 다 외부 저장소에 저장되며 색인 구조와 검색 방식만 서로 다르다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-1. Parametric / Non-parametric Knowledge]\nParametric Knowledge는 모델 파라미터 내부에 저장된 지식이고 Non-parametric Knowledge는 외부 저장소의 지식이다. RAG는 이 둘을 함께 활용한다."
+    },
+    {
+      "id": 32,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Datastore에 대한 설명으로 옳지 않은 것은?",
+      "choices": [
+        "가공되지 않은 대규모 텍스트 코퍼스일 수 있다",
+        "수억에서 수조 단위의 토큰으로 구성될 수도 있다",
+        "위키피디아, 웹 문서, 기업 내부 문서 등이 해당할 수 있다",
+        "반드시 라벨링되고 완전히 구조화된 데이터여야만 한다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-3. Datastore]\nDatastore는 가공되지 않은 대규모 텍스트 코퍼스일 수 있으며, 반드시 라벨링된 데이터셋일 필요도 Knowledge Base처럼 완전히 구조화된 데이터일 필요도 없다. 따라서 ④가 옳지 않다."
+    },
+    {
+      "id": 33,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Query에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "Query는 언제나 사용자의 질문 문장과 완전히 동일해야 한다",
+        "Query는 반드시 벡터가 아닌 키워드 형태로만 표현되어야 한다",
+        "언어모델의 최종 입력과 Query가 반드시 같을 필요는 없다",
+        "Query는 검색이 끝난 뒤 생성 단계에서만 만들어진다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-4. Query]\n언어모델의 최종 입력과 Query가 반드시 동일한 것은 아니다. 사용자의 질문을 그대로 검색할 수도 있고, 검색에 적합한 형태로 변환한 query를 사용할 수도 있다."
+    },
+    {
+      "id": 34,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Index의 정의로 가장 적절한 것은?",
+      "choices": [
+        "문서나 단락처럼 검색 가능한 항목을 체계적으로 정리해 쉽게 찾도록 만든 구조",
+        "질의와 문서의 관련성을 사람이 직접 채점해 미리 만들어 둔 순위표이다",
+        "검색된 문서를 요약해 언어모델 입력으로 넘겨주는 중간 처리 모듈이다",
+        "모델 파라미터에 새로운 지식을 직접 써 넣어 갱신하는 편집 기법이다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-5. Index]\nIndex는 문서나 단락과 같은 검색 가능한 항목을 체계적으로 정리하여 더 쉽게 찾을 수 있도록 하는 구조다. Inverted Index나 Vector Index가 대표적이다."
+    },
+    {
+      "id": 35,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Information Retrieval에 대한 설명으로 옳지 않은 것은?",
+      "choices": [
+        "사용자의 질의에 맞는 정보를 대규모 데이터에서 찾아 제공하는 과정이다",
+        "주요 목표는 질의와 관련성이 가장 높은 정보를 제공하는 것이다",
+        "RAG는 이 개념을 활용해 검색된 문서로 더 정확한 답변을 생성한다",
+        "언어모델이 내부 파라미터만 사용하여 정보를 생성하는 방식이다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-8. Information Retrieval]\nIR은 외부 데이터 저장소에서 사용자의 질의에 맞는 정보를 검색하는 과정이다. 언어모델이 내부 파라미터만 사용하여 정보를 생성하는 것은 기존 Language Model 방식이므로 ④가 옳지 않다."
+    },
+    {
+      "id": 36,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "문서에서 제시한 Information Retrieval의 활용 분야로 옳은 것은?",
+      "choices": [
+        "모델 파라미터를 직접 수정하는 지식 편집에 활용된다",
+        "웹 및 아이템 검색, 추천 시스템, 검색증강생성에 활용된다",
+        "강화학습의 보상 모델을 학습하는 데 활용된다",
+        "툴 호출 스키마를 표준화하는 데 활용된다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-9. IR 활용]\n문서가 제시한 활용 분야는 웹 서치와 아이템 서치, 추천 시스템, 그리고 검색증강생성이다. ①의 지식 편집은 오히려 RAG의 대안으로 언급된 개념이다."
+    },
+    {
+      "id": 37,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Retriever의 역할로 가장 적절한 것은?",
+      "choices": [
+        "검색된 문서를 바탕으로 최종 답변 문장을 만들어 내는 생성 모듈이다",
+        "사람의 선호 순위를 학습해 응답마다 점수를 매기는 평가 모듈이다",
+        "질의에 맞는 후보 문서를 저장소에서 찾아오는 RAG의 첫 단계 모듈이다",
+        "모델과 툴의 연결 규격을 통일해 주는 표준 프로토콜 계층이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-10. Retriever]\nRetriever는 사용자의 Query에 맞는 후보 문서를 저장소에서 찾아오는 모듈이며 RAG에서 첫 번째 핵심 단계 역할을 한다. ①은 Generator, ④는 C챕터 MCP의 역할이다."
+    },
+    {
+      "id": 38,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Sparse Retriever와 Dense Retriever의 구분 기준으로 옳은 것은?",
+      "choices": [
+        "Sparse는 어휘적 유사도, Dense는 의미적 유사도에 기반한다",
+        "Sparse는 의미적 유사도, Dense는 어휘적 유사도에 기반한다",
+        "Sparse는 신경망 임베딩, Dense는 통계 가중치를 사용한다",
+        "Sparse는 재순위화 전용, Dense는 후보 검색 전용으로 쓰인다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-11. Retriever의 종류]\nSparse Retriever는 어휘적 유사도에, Dense Retriever는 의미적 유사도에 기반한다. Bi-encoder와 Cross-encoder는 Dense Retriever 내부의 구조 구분이므로 혼동하면 안 된다."
+    },
+    {
+      "id": 39,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Sparse Retriever와 Dense Retriever의 대표 기법을 옳게 짝지은 것은?",
+      "choices": [
+        "Sparse는 DPR과 Contriever이고 Dense는 TF-IDF와 BM25이다",
+        "Sparse는 BERT 임베딩이고 Dense는 Inverted Index 구조이다",
+        "Sparse는 Cross-encoder이고 Dense는 Bi-encoder 구조이다",
+        "Sparse는 TF-IDF와 BM25이고 Dense는 DPR과 Contriever이다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-11. Retriever의 대표 기법]\nSparse는 TF-IDF와 BM25, Dense는 DPR과 Contriever, OpenAI Embeddings가 대표적이다. ③의 Cross-encoder와 Bi-encoder는 둘 다 Dense Retriever의 구조이므로 Sparse와 Dense를 나누는 기준이 아니다."
+    },
+    {
+      "id": 40,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "TF와 IDF의 의미를 옳게 설명한 것은?",
+      "choices": [
+        "TF는 전체 코퍼스에서의 희귀도, IDF는 문서 내 등장 빈도를 뜻한다",
+        "TF는 문서 내 등장 빈도, IDF는 전체 코퍼스에서의 희귀도를 뜻한다",
+        "TF와 IDF 모두 문서 내 등장 빈도를 다르게 정규화한 값을 뜻한다",
+        "TF와 IDF 모두 임베딩 벡터 사이의 코사인 유사도를 뜻한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-12. TF-IDF]\nTF는 특정 단어가 문서에서 얼마나 자주 등장하는지를, IDF는 그 단어가 전체 코퍼스에서 얼마나 드물게 등장하는지를 나타낸다."
+    },
+    {
+      "id": 41,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "this, is, and 같은 단어의 TF-IDF 가중치가 0에 가까워지는 이유는?",
+      "choices": [
+        "문서 내 등장 빈도가 낮아 TF 값이 0에 가까워지기 때문",
+        "임베딩 공간에서 다른 단어들과 거리가 매우 멀기 때문",
+        "거의 모든 문서에 등장해 IDF가 낮아지고 가중치가 작아지기 때문",
+        "Inverted Index 구조에서 아예 색인되지 않기 때문"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-12. IDF의 의미]\nthis, is, and 같은 단어는 거의 모든 문서에 등장하므로 IDF 값이 낮아지고 결과적으로 TF-IDF 가중치가 0에 가까워진다. TF가 낮아서가 아니라 IDF가 낮아지는 것이 이유다."
+    },
+    {
+      "id": 42,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "TF-IDF 수식의 구성으로 옳은 것은?",
+      "choices": [
+        "문서 내 단어 빈도에 전체 문서 수를 그 단어가 등장한 문서 수로 나눈 값의 로그를 곱한다",
+        "문서 내 단어 빈도에 전체 문서 수를 그대로 곱한 다음 전체 값에 로그를 취한다",
+        "단어가 등장한 문서 수를 전체 문서 수로 나눈 값에 로그를 취해 빈도에 더한다",
+        "질의 임베딩과 문서 임베딩의 내적을 문서의 길이로 나누어 정규화한 값을 쓴다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-12. TF-IDF 수식]\n가중치는 문서 내 단어 빈도에, 전체 문서 수를 해당 단어가 등장한 문서 수로 나눈 값의 로그를 곱해 계산한다. 즉 문서 내 빈도와 전체 코퍼스에서의 희귀도를 함께 반영한다."
+    },
+    {
+      "id": 43,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Sparse Retriever의 장점으로 옳은 것은?",
+      "choices": [
+        "동의어와 다양한 표현까지 의미 수준에서 처리할 수 있어 유연하다",
+        "복잡하고 긴 질의도 벡터 공간에서 풍부하게 표현할 수 있어 유리하다",
+        "질의와 문서 토큰이 완전히 상호작용하므로 정확도가 매우 높은 편이다",
+        "구현이 단순하고 Inverted Index로 빠르며 매칭 근거가 투명하다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-13. Sparse Retriever의 장점]\n장점은 구현과 이해가 쉬운 단순성, Inverted Index 구조를 통한 효율성, 어떤 단어가 매칭되었는지 설명 가능한 투명성이다. ①과 ②는 Dense, ③은 Cross-encoder의 특징이다."
+    },
+    {
+      "id": 44,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Sparse Retriever의 한계를 보여주는 사례로 가장 적절한 것은?",
+      "choices": [
+        "학습 데이터와 임베딩 모델의 품질에 검색 결과가 크게 좌우되는 문제이다",
+        "bad guy와 villain처럼 의미는 비슷해도 단어가 달라 매칭에 실패하는 문제",
+        "모든 질의와 문서 쌍을 개별로 계산해야 해서 검색 속도가 느려지는 문제이다",
+        "검색 결과가 블랙박스처럼 동작해 이유를 설명하기 어려워지는 문제이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-13. Sparse Retriever의 단점]\nSparse 방식은 의미 이해가 제한되어, bad guy와 villain처럼 의미는 유사하지만 단어가 다르면 매칭에 실패할 수 있다. ①과 ④는 Dense Retriever의 단점이다."
+    },
+    {
+      "id": 45,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Bi-encoder의 구조로 옳은 것은?",
+      "choices": [
+        "질의와 문서를 하나의 시퀀스로 결합해 Transformer에 입력한다",
+        "모든 질의와 문서 쌍을 개별 계산하므로 대규모 검색에 부적합하다",
+        "질의와 문서를 각각 독립적으로 인코딩해 임베딩 간 유사도로 관련성을 계산한다",
+        "통계 기반 가중치로 단어의 중요도를 계산해 관련성을 매긴다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-15. Bi-encoder]\nBi-encoder는 Query와 Document를 독립적으로 각각 인코딩한 뒤 임베딩 간 유사도로 관련성을 계산한다. ①과 ②는 Cross-encoder, ④는 Sparse 방식의 설명이다."
+    },
+    {
+      "id": 46,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Cross-encoder의 구조로 옳은 것은?",
+      "choices": [
+        "질의와 문서를 하나의 시퀀스로 결합해 모든 토큰이 Self-Attention으로 상호작용한다",
+        "질의와 문서를 각각 독립적으로 인코딩한 다음 코사인 유사도로 관련성을 계산한다",
+        "문서 임베딩을 미리 계산해 두기 때문에 대규모 검색에서도 속도가 매우 빠르다",
+        "단어의 정확한 일치 여부만을 기준으로 문서와 질의의 관련성을 판단하게 된다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-16. Cross-encoder]\nCross-encoder는 두 텍스트를 하나의 시퀀스로 결합해 Transformer에 입력하며, Self-Attention을 통해 모든 Query 토큰과 Document 토큰이 직접 상호작용한다. ②와 ③은 Bi-encoder의 특징이다."
+    },
+    {
+      "id": 47,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Bi-encoder와 Cross-encoder의 비교로 옳지 않은 것은?",
+      "choices": [
+        "Bi-encoder는 문서 임베딩을 미리 계산할 수 있어 검색이 매우 빠르다",
+        "Cross-encoder는 토큰 수준 상호작용이 가능해 정확도가 상대적으로 높다",
+        "Bi-encoder는 대규모 후보 검색에, Cross-encoder는 재순위화에 적합하다",
+        "Cross-encoder는 계산이 가벼워 전체 문서 집합 검색에 가장 적합하다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-17. Bi-encoder vs Cross-encoder]\nCross-encoder는 모든 질의와 문서 쌍을 개별로 계산해야 하므로 계산 비용이 크고 느리다. 따라서 전체 문서 집합 검색보다는 Reranking 단계에 적합하며 ④는 옳지 않다."
+    },
+    {
+      "id": 48,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "Dense Retriever의 장점으로 옳은 것은?",
+      "choices": [
+        "매칭된 단어를 그대로 보여줄 수 있어 결과 해석이 매우 쉽다",
+        "동의어와 다양한 표현을 처리하고 복잡한 질의를 풍부하게 표현할 수 있다",
+        "별도의 학습 없이 통계 계산만으로 즉시 사용할 수 있다",
+        "Inverted Index 구조 덕분에 검색 속도가 매우 빠르다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-18. Dense Retriever의 장점]\nDense Retriever는 동의어와 다양한 표현을 의미 수준에서 처리하고, 복잡하고 긴 질의도 벡터 공간에서 풍부하게 표현할 수 있다. ①과 ④는 Sparse의 장점이다."
+    },
+    {
+      "id": 49,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "Dense Retriever의 단점으로 옳은 것은?",
+      "choices": [
+        "표현이 다르면 매칭에 실패해 의미 수준의 이해가 제한되는 문제가 있다",
+        "질의와 문서가 결합되어 대규모 검색에는 아예 사용할 수 없는 문제가 있다",
+        "연산 비용이 크고 블랙박스처럼 동작해 투명성이 낮으며 데이터에 의존한다",
+        "사람이 만든 정답 레이블이 문서마다 반드시 필요하다는 문제가 있다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-18. Dense Retriever의 단점]\n단점은 높은 연산 비용, 블랙박스처럼 동작해 낮은 투명성, 그리고 학습 데이터와 임베딩 모델 품질에 크게 좌우되는 데이터 및 모델 의존성이다. ①은 Sparse의 단점이다."
+    },
+    {
+      "id": 50,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "RAG가 필요한 첫 번째 이유로 문서가 제시한 것은?",
+      "choices": [
+        "자주 등장하는 정보는 잘 기억하지만 희귀하거나 최신인 정보는 누락할 수 있다",
+        "희귀한 정보를 오히려 더 잘 기억하고 흔한 정보를 자주 놓치는 경향이 있다",
+        "모든 지식을 파라미터에 완전히 저장할 수 있어 외부 검색이 불필요하다",
+        "검색 결과가 주어지기만 하면 언제나 사실 정확성이 완전히 보장된다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-20. 이유 1. 모든 지식을 파라미터에 저장하지 못함]\nLLM은 사전학습 데이터에 자주 나타나는 정보를 더 잘 기억하는 경향이 있어 희귀하거나 최신인 정보는 누락할 수 있다. RAG는 자주 등장하지 않는 정보에 대한 지식 공백을 보완한다."
+    },
+    {
+      "id": 51,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "LLM의 지식 갱신과 관련해 RAG가 유리한 이유로 옳은 것은?",
+      "choices": [
+        "지식 편집 기법은 확장성이 뛰어나 외부 저장소보다 갱신이 훨씬 쉽다",
+        "외부 저장소는 한 번 만들면 수정이 어려워 결국 재학습이 필요해진다",
+        "모델 파라미터는 검색 과정 없이도 실시간으로 자동 갱신될 수 있다",
+        "지식 편집은 확장성이 부족한 반면 저장소는 쉽게 갱신해 최신 상태를 유지한다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-20. 이유 2. 지식이 금방 뒤처지고 갱신이 어려움]\n현재의 지식 편집 방식은 확장성이 부족한 반면, Datastore는 쉽게 추가하고 수정하여 최신 상태를 유지할 수 있다. 그래서 최신 정보가 필요한 상황에 RAG가 유리하다."
+    },
+    {
+      "id": 52,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "RAG가 필요한 이유 중 검증과 보안 측면에 해당하는 것은?",
+      "choices": [
+        "검색을 사용하기만 하면 답변의 사실 정확성이 언제나 보장된다",
+        "출처를 제시해 검증이 가능해지고 기업 내부 정보도 학습 없이 활용할 수 있다",
+        "내부 문서를 모델 파라미터에 직접 학습시키는 것이 가장 안전하고 효율적이다",
+        "출처 제시는 불가능하지만 최신 정보를 반영하는 것만은 가능해진다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-20. 이유 3, 4. 검증 가능성과 보안 정보]\nRAG는 참고 문서와 출처를 제시해 답변의 검증을 가능하게 하고, 기업 내부 문서처럼 학습에 넣기 어려운 정보도 검색으로 활용할 수 있게 한다. 다만 검색을 쓴다고 정확성이 항상 보장되지는 않는다."
+    },
+    {
+      "id": 53,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 0,
+      "stem": "RAG 파이프라인의 순서로 옳은 것은?",
+      "choices": [
+        "문서를 먼저 검색한 다음 질문을 추출하고 마지막에 답변을 생성한다",
+        "답변을 먼저 생성한 다음 문서를 검색하고 마지막에 질문을 추출한다",
+        "질문을 추출해 해석한 다음 문서를 검색하고 그 결과로 답변을 생성한다",
+        "질문을 추출해 답변을 먼저 만들고 사후에 문서를 검색해 검증한다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-21. RAG 파이프라인]\n파이프라인은 질문 추출과 해석, 문서 검색, 그리고 검색 결과 기반 답변 생성의 순서다. 검색이 생성보다 먼저 이루어져야 근거 기반 답변이 가능하다."
+    },
+    {
+      "id": 54,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "RAG의 첫 번째 과제인 Context 구성 문제에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "필요한 정보를 어떻게 구성할지가 문제이며 컨텍스트 길이 확장이 해결 방향이다",
+        "검색 결과를 많이 넣을수록 성능이 좋아지므로 문서 개수만 늘리면 된다",
+        "컨텍스트 길이는 고정값이라 늘릴 수 없으므로 검색 자체를 줄여야 한다",
+        "컨텍스트 구성은 검색기 성능과 무관한 완전히 별개의 문제로 다뤄진다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-23. Challenge 1. Context 구성]\n필요한 정보를 어떻게 Context에 구성할지가 문제이며, 해결 방향으로 언어모델의 Context Length 확장이 제시된다. 검색 결과를 많이 넣는다고 항상 좋아지는 것은 아니다."
+    },
+    {
+      "id": 55,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 2,
+      "stem": "검색 모델 성능 의존성에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "검색을 사용하면 컨텍스트에 있는 잘못된 정보도 모델이 쉽게 무시한다",
+        "검색 품질과 무관하게 RAG의 최종 결과 품질은 일정하게 유지된다",
+        "노이즈는 생성 단계가 아니라 색인을 만드는 단계에서만 문제가 된다",
+        "검색 모델 성능에 의존하므로 정보검색을 쓴다고 정확성이 보장되지 않는다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[B-24. Challenge 2. 검색 모델 성능 의존]\nRAG의 결과는 검색 모델 성능에 의존하며 컨텍스트 내 잘못된 정보를 모델이 무시하기 어렵다. 따라서 정보검색을 사용한다는 사실만으로 사실 정확성이 보장되지는 않는다."
+    },
+    {
+      "id": 56,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 2,
+      "stem": "Noise Robustness와 Negative Rejection을 옳게 구분한 것은?",
+      "choices": [
+        "Noise Robustness는 검색 문서에 정답 정보가 없을 때 추측하지 않고 거부하는 능력이다",
+        "Noise Robustness는 노이즈가 있어도 정답을 찾고 Negative Rejection은 정보가 없으면 거부한다",
+        "둘 다 사실과 반대되는 문서가 주어졌을 때 오류를 지적해 바로잡는 능력을 뜻한다",
+        "Negative Rejection은 여러 문서에 나뉘어 있는 정보를 통합해 답을 만드는 능력이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[B-25. Training with Noises]\nNoise Robustness는 외부 문서에 관련 없는 정보가 섞여 있어도 올바른 답을 찾아내는 능력이고, Negative Rejection은 검색 문서에 정답 정보가 없을 때 추측하지 않고 답변을 거부하는 능력이다."
+    },
+    {
+      "id": 57,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 1,
+      "stem": "사전지식과 컨텍스트가 충돌할 때의 해결책으로 문서가 제시한 것은?",
+      "choices": [
+        "컨텍스트를 무시하고 모델의 사전지식을 항상 우선하도록 학습시킨다",
+        "충돌이 생기면 두 가지 답을 모두 나열해 제시하도록 학습시킨다",
+        "컨텍스트에만 근거해 답하도록 하고 정보가 없으면 거절하도록 학습시킨다",
+        "검색기를 제거하고 파라미터 지식만 사용하는 구조로 전환해 버린다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[B-26~B-28. Conflict와 해결]\n사전지식과 컨텍스트가 충돌할 때의 해결책은 두 가지다. 주어진 컨텍스트에만 근거해 답하도록 Grounding 학습을 강화하는 것과, 컨텍스트에 정보가 없을 때 답변을 회피하거나 거절하도록 학습하는 것이다."
+    },
+    {
+      "id": 58,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "Retrieval-Augmented LM (Information Retrieval · Retriever · RAG)"
+      },
+      "star": 2,
+      "stem": "Information Integration과 Counterfactual Robustness를 옳게 구분한 것은?",
+      "choices": [
+        "Information Integration은 문서 종합, Counterfactual Robustness는 오류 지적 능력이다",
+        "Information Integration은 사실 오류가 담긴 문서를 지적해 내는 능력을 가리킨다",
+        "둘 다 관련 없는 문서를 무시하고 정답이 담긴 문서만 골라내는 능력을 가리킨다",
+        "Counterfactual Robustness는 여러 문서에 나뉜 정보를 종합하는 능력을 가리킨다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[B-29. Challenge 4. 복잡한 추론과 사실 오류]\nInformation Integration은 여러 문서의 내용을 종합해 정답을 만드는 능력이고, Counterfactual Robustness는 사실과 반대되는 정보가 Context에 주어져도 이를 적절히 처리하고 지적하는 능력이다."
+    },
+    {
+      "id": 59,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "Russell과 Norvig의 관점에서 Agent의 정의로 옳은 것은?",
+      "choices": [
+        "사람의 지시 없이 스스로 목표까지 만들어내는 자율 프로그램",
+        "센서로 환경을 인지하고 액추에이터로 환경에 행동을 수행하는 모든 것",
+        "대규모 텍스트로 다음 토큰을 예측하도록 학습된 언어모델",
+        "질의에 맞는 문서를 저장소에서 찾아오는 검색 모듈"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-1. Agent란?]\nRussell과 Norvig의 정의에 따르면 Agent는 센서를 통해 환경을 인지하고 액추에이터를 통해 환경에 액션으로 영향을 미치는 것으로 간주될 수 있는 모든 것이다."
+    },
+    {
+      "id": 60,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "강화학습에서 Agent와 환경의 상호작용을 구성하는 기본 요소는?",
+      "choices": [
+        "Instruction, Input, Output",
+        "Query, Index, Retrieved Information",
+        "Observation, Action, Reward",
+        "Host, Client, Server"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-2. 강화학습과 Agent]\n강화학습에서 Agent와 환경의 상호작용은 Observation, Action, Reward로 구성된다. ①은 A챕터 Instruction-tuning 구조, ④는 MCP 아키텍처의 구성요소다."
+    },
+    {
+      "id": 61,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "LLM Agent의 정의로 가장 적절한 것은?",
+      "choices": [
+        "거대언어모델을 핵심 구조로 삼아 환경을 이해하고 행동을 수행하는 에이전트",
+        "언어모델의 내부 파라미터만으로 답변을 생성하는 일반적인 대화 시스템",
+        "검색기와 생성기를 결합해 문서에 근거한 답변을 만들어 내는 시스템",
+        "모델과 툴의 연결 규격을 공통으로 정의해 둔 표준 통신 프로토콜"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-3. LLM Agent]\nLLM Agent는 거대언어모델을 핵심 구조인 backbone으로 삼아 환경을 이해하고 행동을 수행하는 에이전트다. ③은 B챕터 RAG, ④는 MCP에 대한 설명이다."
+    },
+    {
+      "id": 62,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "LLM-first View와 Agent-first View의 차이로 옳은 것은?",
+      "choices": [
+        "LLM-first는 로봇과 임바디드 에이전트를 Agent-first는 서치와 코드 에이전트를 가리킨다",
+        "두 관점 모두 언어모델 없이 규칙 기반으로 동작하는 시스템을 전제로 한다",
+        "LLM-first는 강화학습을 Agent-first는 지도학습을 전제로 한다는 점이 다르다",
+        "LLM-first는 기존 LLM 시스템을 에이전트로 만들고 Agent-first는 LLM을 에이전트에 통합한다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-3. LLM-first View와 Agent-first View]\nLLM-first View는 기존 LLM을 활용한 시스템을 에이전트로 만드는 관점으로 서치, 심리상담, 코드 에이전트가 예시다. Agent-first View는 LLM을 AI 에이전트에 통합해 언어를 활용한 추론과 의사소통을 가능하게 하는 관점으로 로봇과 임바디드 에이전트가 예시다. ①은 두 관점의 예시를 뒤바꾼 설명이다."
+    },
+    {
+      "id": 63,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 2,
+      "stem": "문서의 기준에 따라 에이전트 여부를 판단한 것으로 가장 적절한 것은?",
+      "choices": [
+        "복잡한 추론만 수행하는 LLM도 전형적인 에이전트로 분류할 수 있다고 본다",
+        "웹을 탐색하는 LLM 시스템은 에이전트이지만 툴 없이 추론만 하는 LLM은 아니다",
+        "정보를 검색하고 생성만 하는 시스템이 가장 전형적인 에이전트에 해당한다",
+        "환경과의 상호작용 여부는 에이전트인지 판단하는 것과 아무 관계가 없다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-4. 이것은 Agent인가?]\n웹을 탐색하는 시스템과 OS 파일을 검색해 코드로 처리하는 시스템은 Yes이지만, 검색하고 생성만 하는 시스템은 Probably not, 복잡한 추론만 하는 LLM은 툴도 없고 외부 환경과 상호작용하지 않으므로 No다. 핵심은 환경과의 상호작용과 Action 수행 여부다."
+    },
+    {
+      "id": 64,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "성공적인 Agent가 갖추어야 할 요건으로 문서가 제시하지 않은 것은?",
+      "choices": [
+        "도구 사용(Tool Use)",
+        "추론과 계획(Reasoning and Planning)",
+        "보상 모델 학습(Reward Modeling)",
+        "환경 표현과 환경 이해(Environment Representation)"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-5. 성공적인 Agent가 갖추어야 할 요건]\n문서가 제시한 요건은 Tool Use, Reasoning and Planning, Environment Representation, Environment Understanding, Interaction과 Communication이다. Reward Modeling은 A챕터 RLHF의 구성요소이지 Agent 요건이 아니다."
+    },
+    {
+      "id": 65,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "LLM Agent 프레임워크에서 Controller의 역할로 옳은 것은?",
+      "choices": [
+        "사용자 요청을 충족하기 위한 실행 가능한 계획을 제공하는 핵심 두뇌 역할",
+        "서로 다른 기능을 가진 여러 도구들을 한데 모아 둔 집합으로서의 역할",
+        "도구들이 실제로 작동할 수 있는 실행 플랫폼을 제공해 주는 역할",
+        "새로운 도구를 동적으로 생성하고 학습시켜 목록에 추가하는 역할"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-6. LLM Agent Framework - Controller]\nController는 사용자 요청을 충족하기 위한 실행 가능한 계획을 제공하는 LLM의 핵심 두뇌 역할을 한다. ②는 Tool Set, ③은 Environment의 역할이다."
+    },
+    {
+      "id": 66,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "LLM Agent 프레임워크에서 Perceiver의 역할로 옳은 것은?",
+      "choices": [
+        "사용자 요청을 이해하고 실행 계획을 수립해 전달하는 역할",
+        "새로운 도구를 동적으로 생성하고 학습시켜 추가하는 역할",
+        "도구들이 실제로 작동하는 실행 플랫폼을 제공하는 역할",
+        "환경의 피드백을 요약해 Controller에게 전달하는 역할"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-6. LLM Agent Framework - Perceiver]\nPerceiver는 Environment의 feedback을 요약해 Controller에게 전달하는 역할을 한다. ①은 Controller, ③은 Environment의 역할이며 ②는 어느 구성요소에도 해당하지 않는 서술이다."
+    },
+    {
+      "id": 67,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "Tool Set과 Environment의 역할을 옳게 연결한 것은?",
+      "choices": [
+        "Tool Set은 도구가 작동하는 플랫폼을 제공하고 Environment는 도구를 모아 둔다",
+        "Tool Set은 서로 다른 기능의 도구 집합이고 Environment는 도구가 작동하는 플랫폼이다",
+        "Environment는 실행 계획을 수립해 Controller에게 전달하는 역할을 맡는다",
+        "Tool Set은 환경 피드백을 요약해 Controller에게 전달하는 역할을 맡는다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-6. Tool Set과 Environment]\nTool Set은 서로 다른 기능을 가진 도구들의 집합이고, Environment는 도구들이 실제로 작동하는 플랫폼을 제공한다. ①은 두 역할을 뒤바꾼 설명이다."
+    },
+    {
+      "id": 68,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 2,
+      "stem": "LLM Agent 프레임워크의 동작 흐름으로 옳은 것은?",
+      "choices": [
+        "Perceiver가 계획을 세워 Controller와 Environment를 거쳐 Tool Set으로 전달된다",
+        "Environment에서 시작해 Controller와 Perceiver를 거쳐 Tool Set으로 이어진다",
+        "Controller가 계획을 세워 Tool Set을 실행하고 Perceiver가 피드백을 요약해 돌려준다",
+        "Tool Set이 계획을 세우고 Controller가 결과를 요약해 Environment로 전달한다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-6. Framework 흐름]\n흐름은 Controller가 Planning을 수행해 Tool Set으로 이어지고, Tool Execution을 거쳐 Environment에서 실행된 뒤 Environment Feedback을 Perceiver가 요약해 다시 Controller로 전달하는 순환 구조다."
+    },
+    {
+      "id": 69,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "LLM 에이전트에서 말하는 Tool의 정의로 옳은 것은?",
+      "choices": [
+        "언어모델 외부에서 실행되는 프로그램에 연결되는 함수나 API 인터페이스",
+        "언어모델 내부 파라미터에 저장되어 있는 지식의 일부분을 뜻한다",
+        "검색된 문서를 요약해 컨텍스트에 넣어 주는 전처리 모듈을 뜻한다",
+        "사람이 매긴 선호 순위를 저장해 둔 비교 데이터셋을 뜻한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-7. Tool이란?]\nTool은 언어 모델 외부에서 실행되는 프로그램에 연결되는 함수 인터페이스를 의미하며, LLM은 함수 호출과 입력 인자를 생성함으로써 이 도구를 활용한다."
+    },
+    {
+      "id": 70,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "문서에서 제시한 Tool의 분류로 옳은 것은?",
+      "choices": [
+        "텍스트 기반, 이미지 기반, 음성 기반의 세 가지 도구",
+        "지도학습, 비지도학습, 강화학습 기반의 세 가지 도구",
+        "내부 처리, 외부 호출, 혼합 방식 기반의 세 가지 도구",
+        "물리적 상호작용 기반, GUI 기반, 프로그램 기반 도구"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-7. Tool의 종류]\n문서는 Physical Interaction-based Tools, GUI-based Tools, Program-based Tools 세 가지로 분류한다. 물리 세계에서 가상 세계로, 시각적 조작에서 프로그래밍 조작으로 이어지는 축으로 설명된다."
+    },
+    {
+      "id": 71,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "Tool Use Paradigm에서 말하는 두 가지 모드는?",
+      "choices": [
+        "학습 모드와 추론 모드",
+        "텍스트 생성 모드와 도구 실행 모드",
+        "검색 모드와 생성 모드",
+        "데이터 계층 모드와 전송 계층 모드"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-8. Tool Use Paradigm]\nTool Use는 텍스트 생성 모드와 도구 실행 모드 두 모드 간의 전환으로 볼 수 있다. ④는 MCP의 계층 구분이므로 혼동하면 안 된다."
+    },
+    {
+      "id": 72,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "날씨 질문에 대한 툴 사용 흐름으로 옳은 것은?",
+      "choices": [
+        "외부 서버가 먼저 결과를 보내면 언어모델이 그에 맞는 질문을 생성한다",
+        "언어모델이 API를 직접 실행한 뒤 사람이 결과를 검증해 다시 입력한다",
+        "언어모델이 툴 호출 토큰을 만들면 외부에서 실행되고 결과가 답변에 반영된다",
+        "언어모델이 내부 파라미터만으로 날씨를 추론해 곧바로 최종 답변을 만든다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-8. Tool Use 예시]\n사용자가 날씨를 물으면 언어모델이 툴 호출 토큰을 생성하고, 이 호출이 외부 서버에서 실행되어 결과가 반환되며, 모델은 그 결과로 API 호출 토큰을 대체해 최종 답변을 만든다."
+    },
+    {
+      "id": 73,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "언어모델이 Tool을 사용하도록 유도하는 방법 두 가지는?",
+      "choices": [
+        "추론 시 프롬프트로 유도하는 방법과 학습을 통해 익히게 하는 방법",
+        "보상 모델을 학습하는 방법과 강화학습으로 정책을 갱신하는 방법",
+        "색인을 구축하는 방법과 임베딩을 미리 계산해 두는 방법",
+        "데이터 계층을 정의하는 방법과 전송 계층을 정의하는 방법"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-9. Tool 사용을 유도하는 방법]\n문서는 추론 시 프롬프트로 유도하는 Inference-time Prompting과, 학습을 통해 언제 툴을 써야 하는지 익히게 하는 Tool Learning 두 가지를 제시한다."
+    },
+    {
+      "id": 74,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "Tool Learning의 방식 중 모방 학습에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "모델이 스스로 데이터를 생성해 학습하므로 사람의 데이터가 필요 없다",
+        "자동 채점기로 정답 여부를 검증해 보상을 계산하는 학습 방식이다",
+        "질의와 문서를 대조 학습으로 정렬해 도구를 고르게 하는 방식이다",
+        "인간의 도구 사용 행동을 기록해 모방하도록 학습하는 단순한 방식이다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-10. Tool Learning - Imitation Learning]\n모방 학습은 인간의 도구 사용 행동 데이터를 기록함으로써 언어모델이 인간의 행동을 모방하도록 학습하는 방식으로, 가장 간단하고 직관적인 방식이다. ①은 Toolformer의 자기지도 방식이다."
+    },
+    {
+      "id": 75,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "WebGPT에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "모델이 스스로 API 호출 데이터를 생성한 자기지도학습의 대표 사례이다",
+        "검색 엔진 사용을 위해 인간 행동을 모방했고 약 6,000개 데이터만 필요했다",
+        "16,000개 이상의 실제 API를 활용한 대규모 툴 러닝 연구에 해당한다",
+        "성공한 워크플로우를 기억해 프롬프트를 자동 생성하는 방법에 해당한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-11. WebGPT]\nWebGPT는 검색 엔진을 사용하기 위해 인간의 행동을 모방했으며, 지도 학습과 강화학습을 함께 사용했고 단 6,000개의 데이터만 필요했다. 장문 질의응답에서 뛰어난 성능을 보였다."
+    },
+    {
+      "id": 76,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "Toolformer의 특징으로 옳은 것은?",
+      "choices": [
+        "인간 시연 데이터를 대량으로 수집해 모방 학습만을 수행하는 방식이다",
+        "검색 엔진 하나만을 대상으로 도구 사용법을 익히도록 학습한 모델이다",
+        "모델이 스스로 데이터를 만드는 자기지도 방식이며 계산기와 달력 등을 활용한다",
+        "사람의 선호 비교로 보상 모델을 학습해 도구를 고르게 만든 모델이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-12. Toolformer]\nToolformer는 모델 스스로 학습 데이터를 생성하는 자기지도 방식이며, 검색 엔진뿐 아니라 질의응답, 위키 검색, 계산기, 달력, 기계 번역 등 여러 API를 활용한다."
+    },
+    {
+      "id": 77,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 2,
+      "stem": "Toolformer의 데이터 생성 과정을 순서대로 나열한 것은?",
+      "choices": [
+        "API 호출 후보를 샘플링하고, 실제로 실행한 뒤, 유용성을 평가해 필터링한다",
+        "API를 먼저 실행하고, 호출 후보를 샘플링한 뒤, 결과를 필터링한다",
+        "먼저 필터링을 수행하고, 호출 후보를 샘플링한 뒤, API를 실행한다",
+        "API 호출 후보를 샘플링하고, 필터링을 먼저 한 뒤, API를 실행한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-13. Toolformer 데이터 생성 과정]\n순서는 API 호출 샘플링, API 실행, API 호출 필터링이다. 실행 결과가 있어야 그 호출이 문맥 예측에 유용한지 평가할 수 있으므로 필터링이 실행보다 앞설 수 없다."
+    },
+    {
+      "id": 78,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "ToolLLM에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "6,000개의 인간 시연 데이터로 검색 엔진 사용법을 학습한 연구이다",
+        "52K개의 지시문 데이터로 지시 수행 능력을 학습시킨 모델에 해당한다",
+        "성공한 워크플로우를 메모리에 저장해 프롬프트를 자동 생성하는 기법이다",
+        "툴의 다양성을 목표로 16,000개 이상의 실제 API를 활용한 연구이다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-14. ToolLLM]\nToolLLM은 기존 연구의 한계인 툴의 다양성과 범용성을 타겟팅한 연구로, 16,000개 이상의 실제 API를 활용해 대규모 학습 데이터셋과 특화 언어모델, 평가 벤치마크를 함께 제안했다."
+    },
+    {
+      "id": 79,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "Multi-modal Tool Learning에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "텍스트 전용 API만을 대상으로 도구를 정의하고 활용하는 연구이다",
+        "멀티모달 언어모델을 기반으로 도구를 정의하며 GUI 에이전트가 예시이다",
+        "보상 모델 없이 검증 가능한 보상만을 사용하는 학습 방식의 연구이다",
+        "검색기와 생성기를 하나의 인코더로 합치는 것을 목표로 한 연구이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-16. Multi-modal Tool Learning]\n멀티모달 대규모 언어모델을 기반으로 도구를 정의하고 활용하는 연구로 GUI 에이전트와 Embodied 에이전트가 예시다. 최근에는 화면을 직접 보고 마우스와 키보드를 조작하는 Computer Use Agent로 발전하고 있다."
+    },
+    {
+      "id": 80,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "MCP가 등장하게 된 배경으로 가장 적절한 것은?",
+      "choices": [
+        "언어모델의 컨텍스트 길이가 부족해 이를 확장할 필요가 컸기 때문이다",
+        "검색 품질이 낮아 노이즈를 포함한 학습이 반드시 필요했기 때문이다",
+        "회사와 모델마다 툴 호출 방식이 달라 호환성과 재사용성이 낮았기 때문이다",
+        "사람의 선호 데이터를 수집하고 관리하는 비용이 지나치게 컸기 때문이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-17. MCP가 등장한 이유]\n외부 툴 활용 연구가 급증하면서 회사와 모델마다 서로 다른 툴 호출 방식과 스키마를 만들었고, 그 결과 호환성이 부족하고 같은 툴도 모델이 바뀌면 다시 정의해야 하는 재사용 문제가 생겼다."
+    },
+    {
+      "id": 81,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "MCP의 정의로 가장 적절한 것은?",
+      "choices": [
+        "언어모델이 외부 툴과 상호작용하기 위해 표준화된 방식으로 정의한 프로토콜",
+        "검색기와 생성기를 결합해 최종 답변을 만드는 개발 프레임워크이다",
+        "사람의 선호를 학습해 응답의 순위를 매기는 보상 모델을 뜻한다",
+        "문서를 청크로 나누어 벡터로 저장해 두는 색인 구조를 뜻한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-18. MCP]\nMCP는 언어 모델이 외부 툴과 상호작용하기 위한 표준화된 방식으로 정의한 프로토콜이며, 툴 호출과 응답 전달, 컨텍스트 공유를 하나의 공통 규격으로 처리한다."
+    },
+    {
+      "id": 82,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "MCP 아키텍처의 구성요소를 옳게 설명한 것은?",
+      "choices": [
+        "Host는 컨텍스트를 제공하는 프로그램이고 Server는 클라이언트를 조정하고 관리한다",
+        "Client는 여러 Server를 하나로 묶어 단일 연결로 관리하는 구성요소에 해당한다",
+        "Host와 Server가 직접 연결되며 Client는 선택적으로만 존재하는 구조를 갖는다",
+        "Host는 Client를 관리하고 Client는 Server와 연결을 유지하며 컨텍스트를 가져온다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[C-19. MCP Architecture]\nMCP Host는 하나 또는 여러 MCP 클라이언트를 조정하고 관리하는 AI 애플리케이션, MCP Client는 서버와의 연결을 유지하며 컨텍스트를 가져오는 구성요소, MCP Server는 클라이언트에게 컨텍스트를 제공하는 프로그램이다. 각 Client는 Server와 일대일 연결을 형성한다."
+    },
+    {
+      "id": 83,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 2,
+      "stem": "MCP의 두 계층에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "Data Layer는 통신 채널을 정의하고 Transport Layer는 JSON-RPC를 정의한다",
+        "Data Layer는 JSON-RPC 프로토콜을 정의하고 Transport Layer는 통신 채널을 정의한다",
+        "두 계층 모두 인증과 메시지 프레이밍만을 담당하며 역할이 서로 겹친다",
+        "Data Layer가 외부 계층이고 Transport Layer가 내부 계층에 해당한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[C-20. MCP Layer]\nData Layer는 클라이언트와 서버 통신을 위한 JSON-RPC 기반 프로토콜을 정의하고, Transport Layer는 데이터 교환을 가능하게 하는 통신 메커니즘과 채널을 정의한다. 개념적으로 Data Layer가 내부 계층, Transport Layer가 외부 계층이다."
+    },
+    {
+      "id": 84,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 0,
+      "stem": "문서에서 제시한 MCP의 장점으로 옳게 묶인 것은?",
+      "choices": [
+        "표준화, 확장성, 호환성, 재사용성, 은닉성",
+        "표준화, 압축성, 호환성, 재사용성, 투명성",
+        "표준화, 확장성, 호환성, 재사용성, 투명성",
+        "표준화, 확장성, 폐쇄성, 재사용성, 투명성"
+      ],
+      "answerIndex": 2,
+      "explanation": "[C-22. MCP의 장점]\n문서가 제시한 장점은 표준화, 확장성, 호환성, 재사용성, 투명성 다섯 가지다. 은닉성이나 폐쇄성은 오히려 MCP가 해결하려는 문제와 반대되는 성질이다."
+    },
+    {
+      "id": 85,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "LLMs with Tool Usage (LLM Agent · Tool Learning · MCP)"
+      },
+      "star": 1,
+      "stem": "MCP의 통합 표현과 서버 구현에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "제각각이던 툴 호출 구조를 JSON-RPC 공통 규격으로 다루며 FastMCP로 구현한다",
+        "OpenAI의 Function Calling 형식을 그대로 표준으로 채택해 통일한 규격이다",
+        "툴 호출을 없애고 모델의 내부 지식만 사용하도록 만든 규격에 해당한다",
+        "MCP 서버는 stdio만 지원하며 HTTP나 WebSocket 방식은 쓸 수 없다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[C-21, C-23. JSON-RPC 통합과 FastMCP]\nMCP는 OpenAI Function Calling이나 Anthropic Tool Use처럼 제각각이던 툴 호출 구조를 JSON-RPC 형식의 공통 구조로 표현한다. 서버는 FastMCP 라이브러리로 간단히 구현할 수 있으며 stdio, HTTP, WebSocket 등 여러 전송 방식과 연결할 수 있다."
+    },
+    {
+      "id": 86,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "Agent가 환경을 이해하기 위해 필요한 것으로 문서가 제시한 세 가지는?",
+      "choices": [
+        "보상 모델과 선호 데이터, 그리고 정답을 검증하는 자동 검증기",
+        "색인과 임베딩 모델, 그리고 검색을 수행하는 벡터 저장소",
+        "환경에 접근할 Tool과 환경의 Representation, 그리고 이해 방법론",
+        "Host와 Client, 그리고 컨텍스트를 제공하는 Server 프로그램"
+      ],
+      "answerIndex": 2,
+      "explanation": "[D-3. Agent가 환경을 이해하기 위해 필요한 것]\n문서는 환경에 접근하기 위한 Tool, 환경의 Representation, 환경을 이해하고 탐사하기 위한 방법론 세 가지를 제시한다."
+    },
+    {
+      "id": 87,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "ALFWorld에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "물리 세계 정보를 텍스트로 이해하고 텍스트 명령으로 행동하는 시뮬레이션 환경",
+        "구글 스트리트 뷰를 기반으로 한 내비게이션 및 지시 수행 데이터셋이다",
+        "웹 환경을 HTML과 DOM, 접근성 트리로 표현한 평가용 벤치마크이다",
+        "성공한 워크플로우를 저장해 프롬프트를 자동 생성하는 기법에 해당한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[D-4. 환경 표현 - Text / ALFWorld]\nALFWorld는 텍스트 기반 임바디드 에이전트 시뮬레이션 엔진으로, 물리적 세계에 대한 정보를 언어모델이 텍스트 기반으로 이해하고 텍스트 명령을 통해 행동한다. ②는 Touchdown, ③은 WebArena에 대한 설명이다."
+    },
+    {
+      "id": 88,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "Touchdown에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "텍스트 기반의 임바디드 에이전트 시뮬레이션 엔진에 해당하는 환경이다",
+        "웹 환경을 구조화된 텍스트로 표현한 대표적인 평가용 벤치마크이다",
+        "16,000개 이상의 실제 API로 구성된 대규모 툴 학습 데이터셋이다",
+        "스트리트 뷰 기반으로 자연어 지시에 따라 도시 환경에서 경로를 찾는다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[D-5. 환경 표현 - Image / Touchdown]\nTouchdown은 Google Street View 기반의 Navigation 및 Instruction Following 데이터셋으로, 자연어 지시문에 따라 실제 도시 환경 이미지에서 경로를 탐색하고 목표 지점으로 이동한다."
+    },
+    {
+      "id": 89,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "WebArena가 웹 환경을 표현하는 방식으로 옳은 것은?",
+      "choices": [
+        "웹 화면을 스크린샷 이미지로만 표현해 에이전트에게 그대로 제공한다",
+        "웹 환경을 HTML과 DOM, 접근성 트리 같은 구조화된 텍스트로 표현한다",
+        "물리 세계의 사물을 텍스트 명령으로 표현한 임바디드 환경을 제공한다",
+        "강화학습 보상을 자동으로 계산해 주는 검증기 모듈을 함께 제공한다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[D-7. Textual Web Representation / WebArena]\nWebArena는 웹 환경을 HTML, DOM, Accessibility Tree 같은 구조화된 텍스트로 표현한다. 단순 스크린샷 이미지보다 구조화된 표현을 제공해 버튼 클릭이나 항목 선택을 정확히 수행하도록 돕는다."
+    },
+    {
+      "id": 90,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "이미지 기반 환경 표현이 갖는 문제점으로 문서가 지적한 것은?",
+      "choices": [
+        "이미지 표현은 텍스트보다 항상 정확해 별도의 문제가 생기지 않는다",
+        "이미지 표현은 토큰 수가 적어 컨텍스트 문제를 완전히 해결해 준다",
+        "문자 인식과 복잡한 레이아웃의 Grounding, UI 위치 파악이 어렵다",
+        "이미지 표현은 도구 호출 스키마와 호환되지 않아 사용할 수 없다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[D-6. 이미지 기반 표현의 문제점]\nAgent가 좋은 성능을 내려면 세부적인 이해가 중요한데, OCR과 복잡한 레이아웃에서의 Grounding, UI 요소 위치 파악 등에서 많은 모델이 실패할 수 있다. 다만 높은 수준의 학습을 통해 개선이 가능하다."
+    },
+    {
+      "id": 91,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 2,
+      "stem": "복잡한 환경에 대한 Agent의 지식을 옳게 설명한 것은?",
+      "choices": [
+        "이미 아는 일반 지식도 있지만 현재 환경 상태와 새 UI는 상호작용으로 발견해야 한다",
+        "모델은 환경에 대해 모든 것을 이미 알고 있으므로 별도의 탐색이 필요하지 않다",
+        "모델은 환경에 대해 아무것도 모르므로 사전지식은 전혀 활용할 수 없게 된다",
+        "환경에 대한 정보는 오직 보상 모델을 통해서만 간접적으로 획득할 수 있다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[D-8. 복잡한 환경에 대한 이해]\n모델은 코딩 지식이나 일반적인 웹사이트 탐색 방법처럼 파라미터에 포함된 지식은 이미 알고 있지만, 현재 환경의 상태와 새 UI, 특정 툴, 시간적 변화 등은 실시간 환경 상호작용을 통해 발견해야 한다."
+    },
+    {
+      "id": 92,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "Environment-specific Prompt에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "모든 환경에서 동일한 성능을 보장해 주는 범용적인 해법에 해당한다",
+        "프롬프트 없이도 에이전트가 자동으로 환경을 학습하게 만드는 기법이다",
+        "환경별 프롬프트는 주로 검색 품질을 높이는 목적으로 사용되는 기법이다",
+        "환경 특성에 맞는 행동을 유도하지만 새로운 환경에서는 일반화가 어렵다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[D-9. Environment-specific Prompt]\n환경에 맞는 특정 프롬프트를 제공하면 환경 특성에 맞는 행동을 유도할 수 있다는 장점이 있지만, 새로운 환경으로 바뀌면 성능이 떨어지는 일반화 문제가 있다."
+    },
+    {
+      "id": 93,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "Agent Workflow Memory에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "사람이 매번 프롬프트를 직접 설계해 에이전트에게 제공하는 방식이다",
+        "성공한 워크플로우를 기억해 새 프롬프트를 자동 생성해 제공하는 방식이다",
+        "예측이 어려운 상태에 들어갈수록 높은 보상을 주어 탐색을 유도한다",
+        "명령을 샘플링해 실행하고 결과로 지시를 다시 라벨링하는 방식이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "[D-10. Agent Workflow Memory]\nAgent Workflow Memory는 성공적으로 수행된 Workflow를 기억하고 이를 기반으로 새로운 Prompt를 자동 생성해 에이전트에게 제공한다. 사람이 매번 프롬프트를 설계하지 않고 경험을 통해 자동 생성하고 일반화하는 것이 핵심이다. ③은 Curiosity-based Reward, ④는 BAGEL이다."
+    },
+    {
+      "id": 94,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "Curiosity-based Reward에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "정답 여부를 자동으로 검증해 이진 보상을 부여하고 정책을 갱신한다",
+        "사람이 두 응답을 비교해 순위를 매겨 보상을 만드는 학습 방식이다",
+        "예측이 어려운 새로운 상태에 들어갈수록 높은 보상을 주어 탐색을 유도한다",
+        "성공한 워크플로우를 메모리에 저장해 새 상황에 그대로 재사용한다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[D-11. Environment Exploration / Curiosity-based Reward]\n예측하기 어려운 새로운 State Space에 들어갈수록 더 높은 reward를 제공해 새로운 상태 탐색을 유도하는 방식이다. 강화학습의 Exploration 문제와 연결된다."
+    },
+    {
+      "id": 95,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 2,
+      "stem": "BAGEL에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "명령을 샘플링해 실행하고 더 정확한 명령으로 궤적을 다시 라벨링한다",
+        "사람이 만든 정답 데이터셋에만 의존해 에이전트를 학습시키는 방법이다",
+        "보상 모델을 이용해 웹 탐색 정책을 개선하는 강화학습 기법에 해당한다",
+        "웹 환경을 접근성 트리로 표현해 제공하는 평가용 벤치마크 환경이다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[D-12. Exploration-based Trajectory Memorization / BAGEL]\nBAGEL은 명령을 샘플링해 실행하고 더 정확한 새로운 명령으로 Trajectory를 재라벨링한다. LM-Agent가 환경을 탐사하고 LM-Labeler가 결과를 바탕으로 지시를 재작성하므로, 기존 정답 데이터에만 의존하지 않고 탐사 과정에서 데이터를 만들며 자기 교정을 수행한다."
+    },
+    {
+      "id": 96,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 2,
+      "stem": "Local Planning과 Global Planning의 차이로 옳은 것은?",
+      "choices": [
+        "Local은 전체 경로를 한 번에 생성하고 Global은 한 단계씩 계획해 나간다",
+        "두 방식 모두 매 스텝마다 하나의 툴만 결정한다는 점에서 서로 동일하다",
+        "Local은 여러 툴을 Chain으로 묶고 Global은 단일 툴만 사용해 처리한다",
+        "Local은 한 단계씩 계획하고 Global은 전체 계획 경로를 한 번에 생성한다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[D-14. Planning의 두 종류]\nLocal Planning은 한 단계씩 step-by-step으로 계획해 단순하고 직관적이지만 장기 의존 문제가 발생할 수 있다. Global Planning은 실행 가능한 전체 계획 경로를 한 번에 생성하고 여러 툴을 Chain으로 조합해 복잡한 환경에서 안정적이다."
+    },
+    {
+      "id": 97,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "ReAct에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "전체 계획을 먼저 세운 뒤 순차적으로 문제를 해결하는 Global Planning 기법",
+        "추론과 행동을 결합해 Thought와 Action, Observation을 반복하는 기법",
+        "수행한 궤적을 스스로 반성한 뒤 다시 시도하는 오류 복구 중심의 기법",
+        "두 에이전트가 협력해 실행 중 계획과 코드를 재검토하고 수정하는 기법"
+      ],
+      "answerIndex": 1,
+      "explanation": "[D-15. Local Planning / ReAct]\nReAct는 Reasoning과 Action을 결합한 방식으로 Thought, Action, Observation을 반복하며 환경과 상호작용한다. Local 계획에 적합하다. ①은 Plan-and-Solve, ③은 Reflexion, ④는 CoAct에 대한 설명이다."
+    },
+    {
+      "id": 98,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "Plan-and-Solve Prompting에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "매 스텝마다 사용할 툴을 하나씩 결정해 나가는 Local 계획 방식이다",
+        "성공한 워크플로우를 메모리에 저장해 재사용하는 프롬프트 기법이다",
+        "전체 계획을 먼저 세운 뒤 계획에 따라 순차적으로 문제를 해결한다",
+        "예측이 어려운 상태를 우선 탐색하도록 보상을 부여하는 방식이다"
+      ],
+      "answerIndex": 2,
+      "explanation": "[D-16. Global Planning / Plan-and-Solve Prompting]\nPlan-and-Solve는 전체 계획을 먼저 세운 뒤 그 계획에 따라 순차적으로 문제를 해결한다. 단순 step-by-step보다 체계적이고 안정적이어서 누락과 잘못된 순서, 중간 오류를 줄이는 효과를 목표로 한다."
+    },
+    {
+      "id": 99,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 1,
+      "stem": "Reflexion과 CoAct를 옳게 구분한 것은?",
+      "choices": [
+        "Reflexion은 궤적을 반성해 재시도하고 CoAct는 실행 중 계획을 수정한다",
+        "Reflexion은 실행 중 계획을 수정하고 CoAct는 궤적을 반성해 재시도한다",
+        "두 기법 모두 검색된 문서의 노이즈를 제거하는 것을 목적으로 삼는다",
+        "두 기법 모두 툴 호출 스키마를 표준화하는 프로토콜에 해당한다"
+      ],
+      "answerIndex": 0,
+      "explanation": "[D-17, D-18. Reflexion과 CoAct]\nReflexion은 수행한 Trajectory를 평가하고 잘못된 부분을 Reflection 단계에서 분석해 스스로 반성한 뒤 재시도한다. CoAct는 두 에이전트가 협력해 실행 도중 계획과 코드를 다시 검토하고 수정하여 Long-horizon Task의 성공률을 높인다."
+    },
+    {
+      "id": 100,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "AI Agents & LangChain (환경 이해 · Planning · LangChain)"
+      },
+      "star": 0,
+      "stem": "LangChain에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "모델과 툴의 연결 규격을 공통으로 정의해 둔 표준 통신 프로토콜에 해당한다",
+        "웹 환경을 구조화된 텍스트로 표현해 제공하는 평가용 벤치마크에 해당한다",
+        "사람의 선호를 학습해 응답의 순위를 매기는 보상 모델의 일종에 해당한다",
+        "LLM 애플리케이션 개발용 오픈소스 프레임워크로 Chains와 Agents를 제공한다"
+      ],
+      "answerIndex": 3,
+      "explanation": "[D-19, D-21. LangChain]\nLangChain은 LLM 기반 애플리케이션을 빠르게 개발할 수 있는 오픈소스 프레임워크로, Prompt Templates와 Memory, Tools, Chains, Agents 등 모듈화된 컴포넌트를 제공한다. ①은 MCP, ②는 WebArena, ③은 A챕터의 Reward Model에 대한 설명이다."
+    }
+  ],
+  "studyGuide": "",
+  "appendix": ""
+}

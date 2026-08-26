@@ -61,6 +61,16 @@
       "available": true
     },
     {
+      "id": "4-1",
+      "title": "Post-training (Instruction-tuning · RLHF · DPO · RLVR) · Retrieval-Augmented LM (Information Retrieval · Retriever · RAG) · LLMs with Tool Usage (LLM Agent · Tool Learning · MCP) · AI Agents & LangChain (환경 이해 · Planning · LangChain)",
+      "counts": {
+        "mc": 100,
+        "short": 0,
+        "essay": 0
+      },
+      "available": true
+    },
+    {
       "id": "전체 범위 1",
       "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
       "counts": {
