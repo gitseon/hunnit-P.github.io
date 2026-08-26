@@ -71,6 +71,16 @@
       "available": true
     },
     {
+      "id": "4-2",
+      "title": "Introduction to AI Agent · Multi-Agent System · Memory & Tool in Multi-Agent System · Reasoning and Planning in AI Agent · Domain-Specific AI Agent",
+      "counts": {
+        "mc": 80,
+        "short": 0,
+        "essay": 0
+      },
+      "available": true
+    },
+    {
       "id": "전체 범위 1",
       "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
       "counts": {
