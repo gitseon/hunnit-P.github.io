@@ -51,6 +51,18 @@ function renderChoice(q, idx, text) {
     </button>`;
 }
 
+// 같은 문항 안에서는 모든 선지 박스를 가장 높은 선지와 같은 높이로 맞춘다.
+// 문장이 긴 정답만 박스가 커져 보이는 시각적 단서를 줄이기 위한 처리다.
+function equalizeChoiceHeights(root = document) {
+  root.querySelectorAll(".card[data-part='mc'] .choices").forEach((group) => {
+    if (!group.offsetParent) return;
+    const choices = [...group.querySelectorAll(".choice")];
+    choices.forEach((choice) => { choice.style.minHeight = ""; });
+    const maxHeight = Math.max(0, ...choices.map((choice) => choice.offsetHeight));
+    choices.forEach((choice) => { choice.style.minHeight = `${maxHeight}px`; });
+  });
+}
+
 function questionCardHtml(q) {
   const secTag = q.section
     ? `<span class="tag">${escapeHtml(q.section.key)}. ${escapeHtml(q.section.name)}</span>`
@@ -251,6 +263,7 @@ async function main() {
       heading.classList.toggle("hidden-by-filter", !hasVisibleCard);
     });
     document.querySelector(".review-empty").hidden = filter !== "review" || visibleCount > 0;
+    requestAnimationFrame(() => equalizeChoiceHeights(partsEl));
   }
 
   function renderCardState(card) {
@@ -289,6 +302,13 @@ async function main() {
     }
 
     renderCardState(card);
+  });
+
+  requestAnimationFrame(() => equalizeChoiceHeights(partsEl));
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => equalizeChoiceHeights(partsEl), 100);
   });
 
   document.querySelectorAll(".filter-btn").forEach((btn) => {

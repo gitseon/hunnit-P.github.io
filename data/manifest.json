@@ -101,7 +101,7 @@
       "available": true
     },
     {
-      "id": "전체 범위 1",
+      "id": "중간 범위 1",
       "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
       "counts": {
         "mc": 64,
@@ -111,12 +111,22 @@
       "available": true
     },
     {
-      "id": "전체 범위 2",
+      "id": "중간 범위 2",
       "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
       "counts": {
         "mc": 64,
         "short": 20,
         "essay": 12
+      },
+      "available": true
+    },
+    {
+      "id": "중간 범위 3",
+      "title": "AI·ML·DL / 데이터와 학습 · 지도학습 / 회귀·분류 / 손실 · 분류 평가 / 일반화·오버피팅 · 검증·교차검증 / 비지도학습 · 선형회귀 · 다중선형회귀 · 일반화·다중공선성 · 분류와 로지스틱 회귀 · Odds / Logit / MLE · 신경망 / Shallow Network · 다중 입력/출력 · Deep Network · 손실함수 / Gradient Descent / Backpropagation · 원-핫 인코딩과 워드 임베딩 · 순차적 데이터 · RNN · LSTM · Self-Attention · Transformer · 사전학습 기반 언어모델 · 파운데이션 모델과 거대 언어 모델 · 지시 학습과 선호 학습 · 추론과 디코딩 · 프롬프트 엔지니어링 · 평가, 응용과 한계 · CNN과 FCN 기초 · CNN 구조, 풀링, 수용영역 · AlexNet과 계산 문제 · VGGNet, ResNet, MobileNet · RNN과 LSTM · Attention과 ViT · 활성화, 초기화, 정규화, 학습 전략 · 파운데이션 모델의 개념과 학습 패러다임 · 시각언어모델(VLM)과 멀티모달 모델 · sVLM과 온디바이스 모델 · 한국어 sVLM과 토큰화 · LMDeploy와 VLM 배포 · 이미지 파운데이션 모델",
+      "counts": {
+        "mc": 111,
+        "short": 0,
+        "essay": 0
       },
       "available": true
     }

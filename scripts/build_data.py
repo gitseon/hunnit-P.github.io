@@ -353,6 +353,15 @@ def convert_inline_parens(line):
     i, n = 0, len(line)
     while i < n:
         ch = line[i]
+        # 원본에 이미 KaTeX 인라인 구분자 \(...\)가 있으면 그대로 보존한다.
+        # 이를 일반 소괄호로 다시 처리하면 \\( ... \\)처럼 백슬래시가
+        # 중복되어 브라우저에서 수식이 렌더링되지 않는다.
+        if ch == "\\" and i + 1 < n and line[i + 1] == "(":
+            closing = line.find("\\)", i + 2)
+            if closing != -1:
+                result.append(line[i : closing + 2])
+                i = closing + 2
+                continue
         if ch == "(":
             depth = 1
             j = i + 1
@@ -400,7 +409,10 @@ def normalize_math(text):
             while j < len(lines) and lines[j].strip() != "]":
                 block_lines.append(lines[j])
                 j += 1
-            out.append("\\[" + fix_bare_math_functions(join_math_block(block_lines)) + "\\]")
+            block_math = fix_bare_math_functions(join_math_block(block_lines))
+            # 디스플레이 수식 안에 남아 있는 인라인 구분자는 중첩되므로 제거한다.
+            block_math = re.sub(r"\\\((.*?)\\\)", r"\1", block_math)
+            out.append("\\[" + block_math + "\\]")
             i = j + 1
         else:
             out.append(normalize_metric_fractions(convert_inline_parens(lines[i])))
@@ -509,6 +521,22 @@ def main():
                 "available": True,
             }
         )
+
+    # 중간 범위 3은 원본 Markdown 없이 검수된 JSON만 제공된다. 빌드 때도
+    # 기존 JSON을 읽어 목록에서 빠지지 않게 유지한다.
+    have = {c["id"] for c in manifest_chapters}
+    for cid in ["중간 범위 3"]:
+        json_path = DATA_DIR / f"{cid}.json"
+        if cid not in have and json_path.exists():
+            chapter = json.loads(json_path.read_text(encoding="utf-8"))
+            manifest_chapters.append(
+                {
+                    "id": cid,
+                    "title": " · ".join(s["name"] for s in chapter["sections"]),
+                    "counts": chapter["counts"],
+                    "available": True,
+                }
+            )
 
     # source에 파일이 아직 없는 예정 챕터도 목록에 노출 (준비중)
     planned = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"]
