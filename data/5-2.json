@@ -1,0 +1,2014 @@
+{
+  "id": "5-2",
+  "sections": [
+    {
+      "key": "A",
+      "name": "On-device AI 하드웨어 및 플랫폼"
+    },
+    {
+      "key": "B",
+      "name": "100% 정수연산 양자화"
+    },
+    {
+      "key": "C",
+      "name": "분포 이동과 Test-Time Adaptation"
+    },
+    {
+      "key": "D",
+      "name": "CNN 기반 TTA - TENT와 SAR"
+    },
+    {
+      "key": "E",
+      "name": "비전언어모델 기반 TTA"
+    }
+  ],
+  "counts": {
+    "mc": 120,
+    "short": 0,
+    "essay": 0
+  },
+  "questions": [
+    {
+      "id": 1,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "On-device AI가 필요한 배경으로 가장 적절한 것은?",
+      "choices": [
+        "네트워크 연결 없이도 로컬 장치에서 AI 기능을 수행할 필요가 있기 때문이다.",
+        "모든 AI 연산은 반드시 클라우드에서만 가능하기 때문이다.",
+        "CPU에서는 어떤 연산도 수행할 수 없기 때문이다.",
+        "모델의 파라미터 수를 반드시 증가시켜야 하기 때문이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "On-device AI는 네트워크나 클라우드에만 의존하지 않고 장치 자체에서 AI 추론을 수행하는 방향이다. 자료의 산업 현장 사례에서도 낮은 하드웨어 사양에서 실시간으로 동작하는 AI 시스템을 다룬다."
+    },
+    {
+      "id": 2,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "일반 목적 하드웨어에서 AI 성능과 전력 효율을 높이기 위해 사용되는 방향으로 가장 적절한 것은?",
+      "choices": [
+        "모든 연산을 문자열 연산으로 바꾼다.",
+        "도메인 특화 가속기로 전환한다.",
+        "메모리 접근을 의도적으로 증가시킨다.",
+        "모든 장치에서 CPU만 사용한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "일반 목적 CPU/GPU에서 더 높은 AI 성능과 전력 효율을 얻기 위해 NPU, TPU 같은 도메인 특화 가속기를 활용하는 방향이 제시된다."
+    },
+    {
+      "id": 3,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "NPU의 주된 용도로 가장 적절한 것은?",
+      "choices": [
+        "파일 시스템 관리",
+        "네트워크 라우팅",
+        "온디바이스 AI 추론 가속",
+        "운영체제 부팅만 수행"
+      ],
+      "answerIndex": 2,
+      "explanation": "NPU(Neural Processing Unit)는 온디바이스 AI 실행을 위한 AI 전용 가속기이다."
+    },
+    {
+      "id": 4,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "TPU에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "범용 CPU의 한 종류이다.",
+        "초저전력 마이크로컨트롤러만 의미한다.",
+        "그래픽 렌더링만을 위한 장치이다.",
+        "대규모 AI 연산을 위해 설계된 ASIC 계열 가속기이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "TPU(Tensor Processing Unit)는 대규모 AI 연산을 위해 설계된 ASIC 계열의 가속기로 설명된다."
+    },
+    {
+      "id": 5,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "MCU의 특징으로 가장 적절한 것은?",
+      "choices": [
+        "초저전력 임베디드 환경에 적합하다.",
+        "대규모 병렬 그래픽 처리에 가장 특화되어 있다.",
+        "전력 소모가 항상 GPU보다 높다.",
+        "클라우드 서버에서만 사용할 수 있다."
+      ],
+      "answerIndex": 0,
+      "explanation": "MCU(Microcontroller Unit)는 초저전력 임베디드 컴퓨팅에 적합하며 매우 낮은 전력으로 동작할 수 있다."
+    },
+    {
+      "id": 6,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "AI Edge Device에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "Linux를 사용할 수 없고 센서 연결도 불가능하다.",
+        "Linux를 탑재하며 일반 컴퓨터처럼 사용하면서 AI 가속기를 함께 활용할 수 있다.",
+        "AI 모델 학습만 가능하고 추론은 불가능하다.",
+        "반드시 스마트폰 형태여야 한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "AI Edge Device는 Linux를 탑재하여 일반 컴퓨터처럼 사용할 수 있으면서 AI 가속기를 포함한 저사양 컴퓨터 형태로 활용된다."
+    },
+    {
+      "id": 7,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "NVIDIA Jetson 계열 장치가 활용하는 주요 AI 가속 자원으로 가장 적절한 것은?",
+      "choices": [
+        "HDD",
+        "FPGA만 사용",
+        "GPU",
+        "CPU의 부동소수점 연산을 완전히 제거한 장치"
+      ],
+      "answerIndex": 2,
+      "explanation": "Jetson Nano와 Jetson Xavier NX는 GPU 기반의 엣지 AI 장치로 제시된다."
+    },
+    {
+      "id": 8,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "모바일 SoC(System-on-Chip)의 특징으로 가장 적절한 것은?",
+      "choices": [
+        "CPU만 하나의 칩에 포함한다.",
+        "저장장치만 통합한다.",
+        "여러 칩을 반드시 외부 케이블로 연결한다.",
+        "CPU, GPU, NPU/AI 가속기 등 여러 기능을 하나의 칩에 통합할 수 있다."
+      ],
+      "answerIndex": 3,
+      "explanation": "모바일 SoC는 과거 여러 칩에 분리되던 CPU, GPU, AI 가속기 등의 기능을 하나의 칩에 통합한다."
+    },
+    {
+      "id": 9,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "다음 중 모바일 SoC와 AI 가속기의 연결이 옳은 것은?",
+      "choices": [
+        "Qualcomm Snapdragon - Hexagon DSP/NPU",
+        "Apple A-Series - CUDA Core",
+        "Google Tensor - Adreno만 사용",
+        "MediaTek Dimensity - Apple Neural Engine"
+      ],
+      "answerIndex": 0,
+      "explanation": "Qualcomm Snapdragon은 Hexagon DSP/NPU를 AI 가속 자원으로 사용하는 조합으로 제시된다."
+    },
+    {
+      "id": 10,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "AI 모델 학습과 배포 과정에서 런타임이 필요한 주된 이유는?",
+      "choices": [
+        "모델의 정답 label을 자동 생성하기 위해서이다.",
+        "학습 프레임워크와 배포 하드웨어 사이에서 모델 실행을 지원하기 위해서이다.",
+        "모든 모델을 동일한 CPU 명령어로만 실행하기 위해서이다.",
+        "학습 데이터를 삭제하기 위해서이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "학습에는 PyTorch, TensorFlow 같은 프레임워크를 사용하고 실제 배포에서는 하드웨어에 맞는 런타임을 사용한다."
+    },
+    {
+      "id": 11,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "TensorRT가 주로 연결되는 플랫폼으로 가장 적절한 것은?",
+      "choices": [
+        "iOS/macOS 전용 CPU",
+        "Android NPU 인터페이스만",
+        "NVIDIA GPU",
+        "Qualcomm Snapdragon DSP만"
+      ],
+      "answerIndex": 2,
+      "explanation": "TensorRT는 NVIDIA GPU를 위한 대표적인 모델 최적화·실행 런타임으로 제시된다."
+    },
+    {
+      "id": 12,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "OpenVINO가 주로 지원하는 하드웨어 플랫폼으로 가장 적절한 것은?",
+      "choices": [
+        "Google TPU만",
+        "Apple Neural Engine만",
+        "NVIDIA GPU만",
+        "Intel CPU/GPU"
+      ],
+      "answerIndex": 3,
+      "explanation": "OpenVINO는 Intel CPU/GPU 플랫폼에 대응하는 런타임으로 제시된다."
+    },
+    {
+      "id": 13,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "프레임워크 종속성이 문제가 되는 이유로 가장 적절한 것은?",
+      "choices": [
+        "프레임워크마다 지원하는 하드웨어와 실행 환경이 달라질 수 있기 때문이다.",
+        "모든 프레임워크가 동일한 모델 형식을 사용하기 때문이다.",
+        "모델을 한 번 학습하면 어떤 하드웨어에서도 변환 없이 실행되기 때문이다.",
+        "프레임워크는 학습에 전혀 사용되지 않기 때문이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "프레임워크마다 지원 하드웨어가 다르며, 학습된 모델을 다른 가속기에서 직접 실행하지 못할 수 있어 프레임워크 종속성이 문제가 된다."
+    },
+    {
+      "id": 14,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "최적화 병목 현상에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "모델을 한 번만 최적화하면 모든 하드웨어에서 최적 성능이 보장되는 현상",
+        "하드웨어마다 별도의 최적화가 필요해 개발 시간과 비용이 증가하는 문제",
+        "학습 속도가 항상 추론 속도보다 느린 현상",
+        "모델의 정확도가 항상 100%가 되는 현상"
+      ],
+      "answerIndex": 1,
+      "explanation": "실행 하드웨어마다 모델을 따로 변환하고 최적화해야 하면 개발 시간과 비용이 증가한다. 이것이 자료에서 설명하는 최적화 병목 문제이다."
+    },
+    {
+      "id": 15,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "ONNX의 역할로 가장 적절한 것은?",
+      "choices": [
+        "특정 GPU 제조사에서만 사용하는 독점 학습 언어",
+        "모델 학습 데이터 저장 전용 형식",
+        "서로 다른 프레임워크와 하드웨어 사이의 모델 호환성을 높이는 표준 인터페이스",
+        "운영체제를 대체하는 AI 전용 OS"
+      ],
+      "answerIndex": 2,
+      "explanation": "ONNX는 서로 다른 AI 프레임워크에서 학습한 모델을 공통 형식으로 변환하고 여러 하드웨어 환경에서 활용할 수 있도록 상호 운용성을 높인다."
+    },
+    {
+      "id": 16,
+      "part": "mc",
+      "section": {
+        "key": "A",
+        "name": "On-device AI 하드웨어 및 플랫폼"
+      },
+      "star": 0,
+      "stem": "ONNX Runtime의 장점으로 가장 적절한 것은?",
+      "choices": [
+        "PyTorch 모델만 실행할 수 있다.",
+        "모델을 반드시 다시 학습해야 한다.",
+        "CPU에서는 사용할 수 없다.",
+        "ONNX 모델을 여러 환경에서 실행할 수 있도록 지원한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "ONNX Runtime은 ONNX 형식의 모델을 다양한 실행 환경에서 구동할 수 있게 한다."
+    },
+    {
+      "id": 17,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "AI 가속기를 효율적으로 사용하기 위해 필요한 조건으로 가장 적절한 것은?",
+      "choices": [
+        "가중치와 활성화 값뿐 아니라 연산 과정도 정수 연산이 가능하도록 고려해야 한다.",
+        "가중치만 양자화하면 항상 충분하다.",
+        "모든 연산을 FP64로 유지해야 한다.",
+        "활성화 함수만 제거하면 된다."
+      ],
+      "answerIndex": 0,
+      "explanation": "AI 가속기의 정수 연산 성능을 제대로 활용하려면 weight와 activation만 정수로 저장하는 데 그치지 않고 연산 과정도 정수 연산으로 구성해야 한다."
+    },
+    {
+      "id": 18,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "일반적인 8-bit 양자화에서 실수 범위 `[r_min, r_max]`를 표현하기 위해 필요한 주요 파라미터 조합은?",
+      "choices": [
+        "학습률과 momentum",
+        "스케일링 파라미터와 오프셋(제로포인트)",
+        "평균과 분산",
+        "batch size와 epoch"
+      ],
+      "answerIndex": 1,
+      "explanation": "실수 범위를 8-bit 정수 범위에 대응시키려면 scaling parameter와 offset 또는 zero point가 필요하다."
+    },
+    {
+      "id": 19,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "일반 양자화에서 scaling parameter가 실수인 점이 문제가 될 수 있는 이유는?",
+      "choices": [
+        "실수는 메모리에 저장할 수 없기 때문이다.",
+        "scaling parameter는 항상 0이기 때문이다.",
+        "정수 가속기에서 연산 과정에 실수 연산이 남을 수 있기 때문이다.",
+        "양자화된 값은 다시 사용할 수 없기 때문이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "일반 양자화에서는 scale 자체가 실수일 수 있다. 따라서 양자화된 weight와 activation을 사용해도 연산 중 실수 scale 계산이 남아 정수 가속기를 완전히 활용하지 못할 수 있다."
+    },
+    {
+      "id": 20,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "100% 정수연산 양자화의 핵심 목표로 가장 적절한 것은?",
+      "choices": [
+        "모델 입력만 정수로 변환한다.",
+        "weight만 INT8로 저장한다.",
+        "결과 출력만 정수로 변환한다.",
+        "추론 중 필요한 연산을 가능한 한 정수 연산으로 수행할 수 있게 만든다."
+      ],
+      "answerIndex": 3,
+      "explanation": "100% 정수연산 양자화는 추론 과정의 연산을 가능한 한 정수 연산으로 바꾸어 AI 가속기의 정수 연산 능력을 활용하는 것이 핵심이다."
+    },
+    {
+      "id": 21,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "Google Coral Edge TPU의 연산 특성으로 제시된 내용은?",
+      "choices": [
+        "완전 8-bit 정수 포함 연산",
+        "FP64 전용 연산",
+        "문자열 기반 연산",
+        "32-bit 실수 연산만 지원"
+      ],
+      "answerIndex": 0,
+      "explanation": "자료에서는 Google Coral Edge TPU가 완전 8-bit 정수 포함 연산을 수행하는 예로 제시된다."
+    },
+    {
+      "id": 22,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "ARM Ethos-U NPU 시리즈에서 지원하는 모델 정밀도로 제시된 조합은?",
+      "choices": [
+        "32-bit와 64-bit 부동소수점",
+        "8-bit와 16-bit 정수 모델",
+        "4-bit 부동소수점만",
+        "1-bit 이진 모델만"
+      ],
+      "answerIndex": 1,
+      "explanation": "ARM Ethos-U NPU 시리즈는 8-bit, 16-bit 정수 모델 실행을 지원하는 예로 제시된다."
+    },
+    {
+      "id": 23,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "행렬 곱 연산을 정수연산으로 양자화할 때 각 입력이 서로 다른 quantization scheme을 가질 수 있는 이유는?",
+      "choices": [
+        "모든 입력의 실수 범위가 반드시 같기 때문이다.",
+        "scale은 양자화에 사용되지 않기 때문이다.",
+        "입력마다 표현해야 할 실수 범위와 scale이 다를 수 있기 때문이다.",
+        "zero point는 항상 모든 입력에서 동일하기 때문이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "행렬 곱에 참여하는 실수 행렬들은 각자의 값 범위가 다를 수 있으므로 서로 다른 scale과 zero point를 갖는 quantization scheme을 사용할 수 있다."
+    },
+    {
+      "id": 24,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "양자화된 행렬 곱 결과에서 scaling parameter들의 곱이 남는 문제를 해결하는 핵심 아이디어는?",
+      "choices": [
+        "scale을 모두 삭제한다.",
+        "모든 scale을 1로 강제한다.",
+        "행렬 곱을 수행하지 않는다.",
+        "scale 비율을 정수와 2의 거듭제곱 형태로 근사하여 정수 연산으로 처리한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "행렬 곱 후 남는 실수 scale 비율을 정수 M과 2의 거듭제곱으로 근사하면 정수 곱셈과 비트 시프트를 이용해 처리할 수 있다."
+    },
+    {
+      "id": 25,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "비트 시프팅(Bit Shifting)을 활용하는 이유로 가장 적절한 것은?",
+      "choices": [
+        "2의 거듭제곱에 의한 스케일 조정을 효율적인 정수 연산으로 구현할 수 있기 때문이다.",
+        "부동소수점 나눗셈을 더 많이 수행하기 위해서이다.",
+        "모델의 파라미터 수를 늘리기 위해서이다.",
+        "모든 값을 문자열로 변환하기 위해서이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "2의 거듭제곱을 곱하거나 나누는 연산은 비트 시프트로 효율적으로 구현할 수 있어 실수 scaling 연산을 줄이는 데 활용된다."
+    },
+    {
+      "id": 26,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "스케일링 파라미터를 `M × 2^\\(-n\\)` 형태로 근사할 때 `2^\\(-n\\)`에 대응하는 효율적 연산은?",
+      "choices": [
+        "행렬 전치",
+        "오른쪽 비트 시프트",
+        "Softmax",
+        "Batch Normalization"
+      ],
+      "answerIndex": 1,
+      "explanation": "`2^\\(-n\\)`으로 나누는 효과는 정수 값에 대한 오른쪽 비트 시프트로 구현할 수 있다."
+    },
+    {
+      "id": 27,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "배치 정규화(Batch Normalization)의 기본 목적은?",
+      "choices": [
+        "모델의 모든 가중치를 0으로 만든다.",
+        "출력 클래스를 늘린다.",
+        "입력 분포의 변화를 줄여 학습을 안정화한다.",
+        "추론 시 반드시 새로운 학습 데이터를 생성한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "Batch Normalization은 학습 중 입력 분포의 변화를 줄여 안정적인 학습을 돕는 기법이다."
+    },
+    {
+      "id": 28,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "Batch Normalization이 양자화 과정에서 별도 연산으로 남아 있으면 비효율적일 수 있는 이유는?",
+      "choices": [
+        "BN은 정수만 입력받기 때문이다.",
+        "BN은 파라미터가 전혀 없기 때문이다.",
+        "BN은 항상 모델 정확도를 낮추기 때문이다.",
+        "BN에는 평균·분산 등을 이용한 연산이 포함되기 때문이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "BN은 평균, 분산, 표준편차 등 실수 연산을 포함하므로 별도 계층으로 그대로 처리하면 100% 정수연산 양자화에 비효율적일 수 있다."
+    },
+    {
+      "id": 29,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "BN Folding의 핵심 아이디어는?",
+      "choices": [
+        "BN 계층을 Conv 계층의 가중치와 bias에 통합한다.",
+        "Conv 계층을 제거하고 BN만 남긴다.",
+        "모든 BN 파라미터를 0으로 만든다.",
+        "BN을 Softmax로 바꾼다."
+      ],
+      "answerIndex": 0,
+      "explanation": "BN Folding은 BN 연산을 바로 앞 Conv 계층의 weight와 bias에 통합하는 방식이다."
+    },
+    {
+      "id": 30,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "BN Folding을 적용했을 때 기대되는 효과로 가장 적절한 것은?",
+      "choices": [
+        "Conv 연산이 반드시 실수 연산으로 바뀐다.",
+        "별도 BN 연산 없이 Conv에 통합하여 효율적인 양자화를 돕는다.",
+        "모델의 계층 수가 증가한다.",
+        "활성화 값의 정수화를 방해한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "BN을 Conv에 folding하면 추론 시 별도 BN 연산을 수행하지 않아도 되므로 효율적인 양자화와 실행에 유리하다."
+    },
+    {
+      "id": 31,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "비전 트랜스포머의 정수연산 양자화에서 추가 고려가 필요한 연산으로 제시되지 않은 것은?",
+      "choices": [
+        "Softmax",
+        "GELU",
+        "Max Pooling",
+        "LayerNorm"
+      ],
+      "answerIndex": 2,
+      "explanation": "자료에서 비전 트랜스포머 정수연산 양자화 시 별도 고려가 필요한 연산으로 Softmax, GELU, LayerNorm을 제시한다. Max Pooling은 해당 목록에 포함되지 않는다."
+    },
+    {
+      "id": 32,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "Softmax를 정수연산 양자화하기 까다로운 이유로 가장 적절한 것은?",
+      "choices": [
+        "덧셈만 수행하기 때문이다.",
+        "항상 출력이 정수이기 때문이다.",
+        "파라미터가 하나도 없기 때문이다.",
+        "exponential 연산과 정규화 과정이 포함되기 때문이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "Softmax에는 exponential과 정규화 과정이 포함되어 있어 단순 정수 덧셈·곱셈만으로 처리하기 어렵다."
+    },
+    {
+      "id": 33,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "GELU의 정수연산 근사에서 활용할 수 있다고 제시된 함수는?",
+      "choices": [
+        "sigmoid",
+        "tanh만",
+        "ReLU만",
+        "argmax"
+      ],
+      "answerIndex": 0,
+      "explanation": "GELU는 상수 1.702와 sigmoid를 활용한 근사식을 이용해 처리할 수 있다고 제시된다."
+    },
+    {
+      "id": 34,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "LayerNorm을 정수연산으로 처리할 때 고려해야 하는 연산으로 가장 적절한 것은?",
+      "choices": [
+        "문자열 비교",
+        "표준편차 계산에 포함되는 분산과 루트 연산",
+        "이미지 회전",
+        "그래프 탐색"
+      ],
+      "answerIndex": 1,
+      "explanation": "LayerNorm은 평균과 분산을 사용하며 표준편차 계산 과정에서 루트 연산이 포함되므로 정수연산화를 위한 별도 근사가 필요하다."
+    },
+    {
+      "id": 35,
+      "part": "mc",
+      "section": {
+        "key": "B",
+        "name": "100% 정수연산 양자화"
+      },
+      "star": 0,
+      "stem": "\"AI 가속기를 효과적으로 사용하려면 모델의 가중치와 활성화 값만 정수로 양자화하면 충분하다.\"에 대한 판단은?",
+      "choices": [
+        "맞다. 가중치만 정수이면 모든 연산이 정수로 수행된다.",
+        "맞다. 활성화 함수는 연산 정밀도와 관계없다.",
+        "틀리다. 연산 과정 자체도 정수 연산이 가능하도록 양자화해야 한다.",
+        "틀리다. AI 가속기는 정수 연산을 지원하지 않는다."
+      ],
+      "answerIndex": 2,
+      "explanation": "가중치와 활성화 값만 정수화해도 Softmax, GELU, LayerNorm이나 scaling 등에서 실수 연산이 남을 수 있다. 따라서 연산 과정까지 정수화해야 한다."
+    },
+    {
+      "id": 36,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "분포 이동(Distribution Shift)이란?",
+      "choices": [
+        "모델의 layer 수가 달라지는 현상",
+        "학습률이 자동으로 증가하는 현상",
+        "데이터 개수가 항상 감소하는 현상",
+        "학습과 테스트 데이터의 분포가 달라지는 현상"
+      ],
+      "answerIndex": 3,
+      "explanation": "Distribution Shift는 학습 데이터와 실제 테스트 데이터의 통계적 분포가 달라지는 현상이다."
+    },
+    {
+      "id": 37,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "분포 이동이 AI 모델에 미칠 수 있는 대표적인 영향은?",
+      "choices": [
+        "모델 성능 하락",
+        "파라미터 수 자동 감소",
+        "항상 정확도 향상",
+        "학습 데이터 자동 복구"
+      ],
+      "answerIndex": 0,
+      "explanation": "학습 시 경험하지 못한 분포의 데이터가 입력되면 모델의 일반화가 어려워져 성능이 하락할 수 있다."
+    },
+    {
+      "id": 38,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "분포 이동의 예시로 가장 적절한 것은?",
+      "choices": [
+        "학습과 테스트 데이터가 완전히 동일한 경우",
+        "학습 시 맑고 깨끗한 이미지였지만 실제 테스트 환경에서는 노이즈가 포함된 경우",
+        "같은 이미지를 두 번 입력한 경우",
+        "모델 파일 이름만 변경한 경우"
+      ],
+      "answerIndex": 1,
+      "explanation": "자료에서는 깨끗한 조건으로 학습한 모델이 실제 환경의 노이즈 등으로 달라진 데이터 분포를 만나 정확도가 떨어지는 상황을 예로 든다."
+    },
+    {
+      "id": 39,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "Test-Time Adaptation(TTA)의 기본 개념으로 가장 적절한 것은?",
+      "choices": [
+        "테스트 데이터를 모두 학습 label로 사용해 처음부터 재학습한다.",
+        "테스트 시점에는 모델을 절대 변경하지 않는다.",
+        "테스트 데이터를 입력받을 때 모델 일부를 테스트 데이터 통계에 맞게 조정한다.",
+        "테스트 데이터의 분포를 학습 데이터와 무조건 동일하게 생성한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "TTA는 테스트 시점에 들어오는 데이터 분포를 활용해 모델 일부를 즉시 조정하여 새로운 환경에 적응시키는 방법이다."
+    },
+    {
+      "id": 40,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "TTA의 주된 목적으로 가장 적절한 것은?",
+      "choices": [
+        "학습 데이터의 label을 예측하기 위해서이다.",
+        "모델의 parameter 수를 최대화하기 위해서이다.",
+        "테스트 데이터를 학습 데이터로 영구 저장하기 위해서이다.",
+        "테스트 데이터 분포를 파악하여 모델이 새로운 환경에 적응하도록 한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "TTA의 목적은 테스트 데이터 분포를 파악하고 모델이 새로운 테스트 환경에 적응하도록 만드는 것이다."
+    },
+    {
+      "id": 41,
+      "part": "mc",
+      "section": {
+        "key": "C",
+        "name": "분포 이동과 Test-Time Adaptation"
+      },
+      "star": 0,
+      "stem": "TTA에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "추가 학습 없이도 테스트 시점의 정보를 이용해 모델 일부를 즉시 조정하는 방식이 가능하다.",
+        "반드시 전체 모델을 처음부터 다시 학습한다.",
+        "항상 정답 label이 필요하다.",
+        "분포 이동이 없는 경우에만 사용할 수 있다."
+      ],
+      "answerIndex": 0,
+      "explanation": "TTA는 모델 전체를 다시 학습하는 방식이 아니라 테스트 시점의 통계나 예측 정보를 이용해 일부 파라미터를 조정하는 방식으로 구현할 수 있다."
+    },
+    {
+      "id": 42,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT(Test-time Entropy Minimization)의 핵심 아이디어는?",
+      "choices": [
+        "학습 데이터의 MSE만 최소화한다.",
+        "테스트 데이터 예측의 엔트로피를 최소화하도록 모델 일부를 업데이트한다.",
+        "모든 모델 파라미터를 무작위로 변경한다.",
+        "테스트 이미지의 label을 직접 입력한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "TENT는 테스트 데이터의 예측 엔트로피를 최소화하는 방향으로 모델 일부 파라미터를 조정하는 Test-Time Adaptation 기법이다."
+    },
+    {
+      "id": 43,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT에서 테스트 데이터를 입력할 때마다 새 데이터 기준으로 계산하는 통계는?",
+      "choices": [
+        "학습률과 epoch",
+        "클래스 개수와 label",
+        "BatchNorm의 평균과 분산",
+        "모델의 layer 개수"
+      ],
+      "answerIndex": 2,
+      "explanation": "TENT에서는 테스트 데이터를 입력할 때마다 BatchNorm의 평균 μ와 분산 σ²을 새 데이터 기준으로 계산한다."
+    },
+    {
+      "id": 44,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT에서 업데이트 대상으로 제시된 파라미터는?",
+      "choices": [
+        "모든 Conv weight",
+        "입력 이미지의 픽셀",
+        "출력 클래스 label",
+        "BatchNorm의 affine parameter인 γ, β"
+      ],
+      "answerIndex": 3,
+      "explanation": "TENT는 테스트 데이터의 예측 엔트로피를 손실로 사용하여 BatchNorm의 affine parameter인 γ와 β를 역전파로 업데이트한다."
+    },
+    {
+      "id": 45,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT가 모델의 예측을 더 확신하는 방향으로 조정하기 위해 사용하는 기준은?",
+      "choices": [
+        "엔트로피 최소화",
+        "weight 개수 최대화",
+        "분산 최대화",
+        "loss를 무작위로 변경"
+      ],
+      "answerIndex": 0,
+      "explanation": "엔트로피가 작을수록 예측 분포가 특정 클래스에 집중되므로 모델이 더 확신하는 방향으로 조정된다고 볼 수 있다."
+    },
+    {
+      "id": 46,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT의 결과에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "항상 학습 데이터가 추가로 필요하다.",
+        "전체 재학습 없이 테스트 데이터 분포에 맞게 모델을 즉시 최적화한다.",
+        "테스트 환경에서는 모델을 변경할 수 없다.",
+        "BatchNorm 통계는 절대 변경하지 않는다."
+      ],
+      "answerIndex": 1,
+      "explanation": "TENT는 전체 재학습 없이 테스트 시점의 BatchNorm 통계와 일부 파라미터를 조정해 테스트 환경에 즉시 적응한다."
+    },
+    {
+      "id": 47,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "SAR이 TENT보다 안정적인 최적화를 목표로 도입하는 방법으로 가장 적절한 것은?",
+      "choices": [
+        "모든 테스트 샘플을 동일하게 사용한다.",
+        "엔트로피가 가장 높은 샘플만 사용한다.",
+        "엔트로피가 낮은 신뢰도 있는 샘플을 선택해 업데이트에 반영한다.",
+        "테스트 데이터 사용을 금지한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "SAR은 모든 샘플을 무조건 업데이트에 사용하지 않고 엔트로피가 낮은, 즉 상대적으로 신뢰도 높은 샘플을 선택한다."
+    },
+    {
+      "id": 48,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "SAR에서 일부 테스트 데이터가 노이즈가 많거나 이상치일 때 생길 수 있는 문제는?",
+      "choices": [
+        "모델의 parameter가 자동으로 사라진다.",
+        "모든 예측의 엔트로피가 항상 0이 된다.",
+        "BatchNorm이 자동으로 제거된다.",
+        "잘못된 gradient가 모델을 불안정하게 만들 수 있다."
+      ],
+      "answerIndex": 3,
+      "explanation": "노이즈나 이상치가 포함된 샘플로부터 잘못된 gradient가 생성되면 모델 업데이트가 불안정해질 수 있다."
+    },
+    {
+      "id": 49,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "SAR에서 loss smoothing을 적용하는 목적은?",
+      "choices": [
+        "엔트로피 손실이 너무 요동하지 않도록 안정화한다.",
+        "loss를 항상 0으로 만든다.",
+        "모델의 모든 layer를 제거한다.",
+        "테스트 샘플 수를 늘린다."
+      ],
+      "answerIndex": 0,
+      "explanation": "SAR은 엔트로피 손실이 너무 크게 요동하지 않도록 loss smoothing을 적용해 안정적인 적응을 목표로 한다."
+    },
+    {
+      "id": 50,
+      "part": "mc",
+      "section": {
+        "key": "D",
+        "name": "CNN 기반 TTA - TENT와 SAR"
+      },
+      "star": 0,
+      "stem": "TENT와 SAR의 차이에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "SAR은 테스트 데이터를 전혀 사용하지 않는다.",
+        "TENT는 BatchNorm 기반 적응을 사용하고, SAR은 신뢰도 높은 샘플 선택과 안정화 과정을 추가한다.",
+        "TENT는 비전언어모델의 prompt만 업데이트한다.",
+        "두 기법은 항상 완전히 동일하게 동작한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "TENT는 BatchNorm 통계와 γ, β를 엔트로피 최소화 방향으로 조정한다. SAR은 여기에 신뢰도 높은 샘플 선택과 안정화 기법을 더한다."
+    },
+    {
+      "id": 51,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "TPT(Test-Time Prompt Tuning)의 핵심 아이디어로 가장 적절한 것은?",
+      "choices": [
+        "이미지 인코더 전체를 처음부터 다시 학습한다.",
+        "테스트 이미지에 사람이 직접 label을 붙인다.",
+        "테스트 이미지의 여러 증강본을 이용해 예측 일관성이 높아지도록 테스트 prompt를 조정한다.",
+        "prompt를 고정하고 모델 전체 weight만 갱신한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "TPT는 테스트 이미지에서 여러 증강본을 만들고 예측의 불확실성을 이용해 테스트 prompt를 조정하는 방식이다."
+    },
+    {
+      "id": 52,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "TPT에서 하나의 테스트 이미지에 대해 먼저 수행하는 작업은?",
+      "choices": [
+        "학습 데이터 전체를 삭제한다.",
+        "이미지 인코더를 제거한다.",
+        "클래스 수를 1개로 줄인다.",
+        "여러 증강본을 생성한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "TPT에서는 테스트 이미지마다 회전, 밝기 변화 등 여러 증강본을 먼저 생성한다."
+    },
+    {
+      "id": 53,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "TPT에서 여러 증강본 중 업데이트에 사용할 이미지를 고르는 기준으로 제시된 것은?",
+      "choices": [
+        "엔트로피가 낮은 이미지",
+        "엔트로피가 가장 높은 이미지만",
+        "픽셀 수가 가장 많은 이미지",
+        "파일 크기가 가장 큰 이미지"
+      ],
+      "answerIndex": 0,
+      "explanation": "생성한 증강본 가운데 엔트로피가 가장 낮은 쪽의 이미지들을 선택해 prompt 업데이트에 사용한다."
+    },
+    {
+      "id": 54,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "TPT에서 선택된 이미지들의 평균 엔트로피를 최소화하도록 업데이트하는 대상은?",
+      "choices": [
+        "이미지의 정답 label",
+        "테스트 prompt",
+        "이미지 인코더의 모든 weight",
+        "학습 데이터의 평균값"
+      ],
+      "answerIndex": 1,
+      "explanation": "선택된 이미지들의 평균 엔트로피를 loss로 설정하고 이를 최소화하도록 테스트 prompt를 업데이트한다."
+    },
+    {
+      "id": 55,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "TPT의 목적을 가장 잘 설명한 것은?",
+      "choices": [
+        "테스트 이미지를 학습 이미지로 복사한다.",
+        "엔트로피를 최대화한다.",
+        "다양한 증강에서도 모델의 예측이 일관되도록 prompt를 조정한다.",
+        "모델을 항상 CNN으로 변환한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "여러 증강본에서도 일관된 예측이 나오도록 prompt를 조정하는 것이 TPT의 핵심 아이디어이다."
+    },
+    {
+      "id": 56,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "PromptAlign의 핵심 목표로 가장 적절한 것은?",
+      "choices": [
+        "테스트 데이터를 무작위로 섞는다.",
+        "모델의 모든 prompt를 제거한다.",
+        "이미지 인코더를 다시 초기화한다.",
+        "학습 데이터와 테스트 데이터의 feature 통계를 정렬한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "PromptAlign은 학습 데이터와 테스트 데이터의 feature 통계를 정렬하는 distribution alignment를 수행한다."
+    },
+    {
+      "id": 57,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "PromptAlign에서 학습 단계에 미리 저장하는 정보로 가장 적절한 것은?",
+      "choices": [
+        "이미지 인코더 계층별 feature의 평균과 분산 통계",
+        "테스트 데이터의 정답 label",
+        "테스트 시점의 엔트로피 값",
+        "모든 이미지의 원본 파일"
+      ],
+      "answerIndex": 0,
+      "explanation": "학습 단계에서 이미지 인코더 계층별 feature의 평균과 분산 통계를 미리 저장한다."
+    },
+    {
+      "id": 58,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "PromptAlign에서 테스트 단계의 주요 과정은?",
+      "choices": [
+        "학습 통계를 모두 삭제한다.",
+        "테스트 증강본을 이용해 feature 통계를 계산하고 학습 통계와의 차이를 줄인다.",
+        "테스트 이미지를 학습 데이터에 직접 추가해 full training한다.",
+        "분포 차이를 의도적으로 증가시킨다."
+      ],
+      "answerIndex": 1,
+      "explanation": "테스트 단계에서는 증강본을 이용해 테스트 feature 통계를 계산하고, 학습 시 저장한 통계와의 차이를 최소화하도록 정렬 loss를 사용한다."
+    },
+    {
+      "id": 59,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "PromptAlign에서 주기적으로 엔트로피 loss를 함께 사용하는 이유로 가장 적절한 것은?",
+      "choices": [
+        "feature 정렬을 완전히 제거하기 위해서이다.",
+        "테스트 데이터의 label을 생성하기 위해서이다.",
+        "안정적인 예측을 유지하는 데 도움을 주기 위해서이다.",
+        "모델의 크기를 증가시키기 위해서이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "PromptAlign은 엔트로피 loss도 주기적으로 함께 사용하여 예측의 안정성을 유지하도록 한다."
+    },
+    {
+      "id": 60,
+      "part": "mc",
+      "section": {
+        "key": "E",
+        "name": "비전언어모델 기반 TTA"
+      },
+      "star": 0,
+      "stem": "PromptAlign의 최종 업데이트 대상으로 제시된 조합은?",
+      "choices": [
+        "Conv weight + BatchNorm 평균만",
+        "학습 label + 테스트 label",
+        "CPU + GPU",
+        "테스트 prompt + 이미지 prompt"
+      ],
+      "answerIndex": 3,
+      "explanation": "자료의 최종 정리에서는 PromptAlign이 테스트 prompt와 이미지 prompt를 모두 업데이트한다고 설명한다."
+    },
+    {
+      "id": 61,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "초거대 AI의 스케일링 법칙에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "모델 크기, 학습 데이터 양, 컴퓨팅 자원이 증가할수록 성능이 향상되는 경향을 말한다.",
+        "모델 크기를 줄일수록 항상 성능이 향상되는 법칙이다.",
+        "학습 데이터의 양과 성능은 관계가 없다는 법칙이다.",
+        "컴퓨팅 자원을 줄여야만 분포 이동을 해결할 수 있다는 법칙이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "스케일링 법칙은 모델 크기(Parameters), 학습 데이터 양(Dataset Size), 컴퓨팅 자원(Compute)이 증가함에 따라 AI 모델 성능이 향상되는 경향을 설명한다."
+    },
+    {
+      "id": 62,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "초거대 AI의 분포 이동 문제를 해결하기 위해 모든 경우의 수를 학습 데이터로 미리 준비하는 접근의 한계는?",
+      "choices": [
+        "추론 속도가 무조건 빨라진다.",
+        "세상의 모든 가능한 상황을 사전에 데이터로 준비하는 것은 현실적으로 불가능하다.",
+        "모델 크기가 자동으로 줄어든다.",
+        "센서가 필요 없어지는 문제가 발생한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료는 분포 이동의 모든 경우를 학습 데이터로 미리 준비하는 것이 현실적으로 불가능하다는 점을 초거대 AI의 한계로 제시한다."
+    },
+    {
+      "id": 63,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "피지컬 AI에서 분포 이동 문제가 특히 중요한 이유로 가장 적절한 것은?",
+      "choices": [
+        "피지컬 AI는 센서를 사용하지 않기 때문이다.",
+        "로봇은 항상 동일한 장소에서만 동작하기 때문이다.",
+        "현실의 환경 변수와 로봇 행동 변수가 다양해 실제 환경이 학습 환경과 달라질 수 있기 때문이다.",
+        "피지컬 AI에는 AI 모델이 사용되지 않기 때문이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "피지컬 AI는 조도·날씨·제품 등 환경 변수와 사람·시간·로봇 행동 등 다양한 변화에 노출되므로 분포 이동이 발생하기 쉽다."
+    },
+    {
+      "id": 64,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "피지컬 AI 환경에서 보완책이 필요한 이유로 자료에서 언급하지 않은 것은?",
+      "choices": [
+        "초거대 AI도 현실의 모든 경우를 완전히 사전 학습하기 어렵다.",
+        "실제 환경에서는 다양한 분포 이동이 발생한다.",
+        "개인정보 보호나 환경 변화 같은 현실적 문제가 존재한다.",
+        "모든 센서 데이터는 항상 학습 데이터와 동일하기 때문이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 현실 환경의 다양성과 분포 이동 때문에 보완책이 필요하다고 설명한다. 센서 데이터가 항상 학습 데이터와 동일하다는 설명은 반대이다."
+    },
+    {
+      "id": 65,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "인간의 인지체계와 적응적 센싱의 공통점으로 가장 적절한 것은?",
+      "choices": [
+        "환경에 맞게 감각 또는 센서의 상태를 조절하여 더 유용한 정보를 얻는다.",
+        "항상 최대 밝기와 최대 해상도를 사용한다.",
+        "환경과 무관하게 동일한 입력만 사용한다.",
+        "입력 정보를 줄이기 위해 센서를 제거한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "인간은 밝기에 따라 동공을 조절하는 등 감각기관을 환경에 맞게 사용한다. 적응적 센싱도 센서 파라미터를 환경에 맞춰 조절한다."
+    },
+    {
+      "id": 66,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "적응적 센싱(Adaptive Sensing)의 개념으로 가장 적절한 것은?",
+      "choices": [
+        "모델 파라미터 수를 계속 증가시키는 방식이다.",
+        "센서 파라미터를 조절해 모델이 좋은 데이터를 받을 수 있도록 하는 방식이다.",
+        "학습 데이터를 모두 OOD로 변환하는 방식이다.",
+        "센서를 고정하고 모델만 무조건 재학습하는 방식이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "적응적 센싱은 환경에 맞춰 카메라 등 센서 파라미터를 조절하여 모델에 더 적합한 데이터를 제공하는 접근이다."
+    },
+    {
+      "id": 67,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "분포 이동 억제 관점에서 적응적 센싱의 특징은?",
+      "choices": [
+        "모델이 학습하지 못한 영역으로 입력을 이동시킨다.",
+        "모델의 ID 영역을 제거한다.",
+        "센서 제어를 통해 데이터를 모델이 아는 영역 안으로 들어오게 한다.",
+        "OOD 데이터만 새로 학습한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 센서 제어를 통해 다양한 데이터를 모델이 아는 영역 안으로 넣어 분포 이동을 억제한다고 설명한다."
+    },
+    {
+      "id": 68,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "모델 일반화와 적응적 센싱의 차이로 가장 적절한 것은?",
+      "choices": [
+        "둘 다 센서 파라미터만 변경한다.",
+        "둘 다 모델을 전혀 사용하지 않는다.",
+        "모델 일반화는 입력 데이터를 삭제하고 적응적 센싱은 label을 삭제한다.",
+        "모델 일반화는 모델의 지식 영역을 확장하고, 적응적 센싱은 입력 데이터를 기존 지식 영역 쪽으로 조절한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료의 그림은 모델 일반화가 모델이 학습한 영역 자체를 넓히는 접근인 반면, 적응적 센싱은 센서를 조절해 입력을 모델이 잘 아는 영역으로 이동시키는 접근임을 보여준다."
+    },
+    {
+      "id": 69,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "적응적 센싱이 모델 일반화에 비해 가질 수 있는 장점으로 제시된 것은?",
+      "choices": [
+        "추가 학습 비용과 시간을 줄이고 기존 모델을 활용할 수 있다.",
+        "항상 더 큰 모델을 요구한다.",
+        "학습 데이터가 반드시 더 많이 필요하다.",
+        "모델을 매번 처음부터 재학습해야 한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "센서 제어를 활용하면 기존 모델의 인식 기능을 유지하면서 환경에 적응할 수 있어 모델 일반화 방식보다 추가 학습 비용과 시간을 줄일 수 있다."
+    },
+    {
+      "id": 70,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "ImageNet-ES 데이터셋의 핵심 특징은?",
+      "choices": [
+        "오디오 신호만 수집한다.",
+        "같은 장면을 카메라 센서 파라미터의 조합을 바꾸며 촬영한다.",
+        "센서 설정은 고정하고 label만 변경한다.",
+        "합성 이미지로만 구성된다."
+      ],
+      "answerIndex": 1,
+      "explanation": "ImageNet-ES는 같은 장면에서 ISO, Shutter Speed, Aperture 등의 센서 파라미터를 변화시키며 이미지를 캡처한다."
+    },
+    {
+      "id": 71,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "ImageNet-ES에서 조절하는 카메라 센서 파라미터에 해당하지 않는 것은?",
+      "choices": [
+        "ISO",
+        "Shutter Speed",
+        "Batch Size",
+        "Aperture"
+      ],
+      "answerIndex": 2,
+      "explanation": "자료에서 ImageNet-ES의 센서 파라미터로 ISO, Shutter Speed, Aperture와 AutoExposure 옵션을 제시한다. Batch Size는 학습 설정이다."
+    },
+    {
+      "id": 72,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "SenseShift6D 데이터셋에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "텍스트 데이터만 포함한다.",
+        "카메라 설정을 변경할 수 없다.",
+        "수면 단계만을 분류하기 위한 데이터셋이다.",
+        "RGB-D 카메라의 센서 파라미터를 변화시키며 같은 장면을 캡처한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "SenseShift6D는 RGB-D 카메라에서 Exposure, Gain, Depth mode 등을 조절하며 동일 장면을 캡처하는 데이터셋이다."
+    },
+    {
+      "id": 73,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "기존 강건성 데이터셋과 적응적 센싱 데이터셋의 차이로 가장 적절한 것은?",
+      "choices": [
+        "기존 데이터셋은 주로 이미지 변환으로 변화를 만들지만 적응적 센싱 데이터셋은 실제 센서 파라미터 변화로 환경 변화를 구현한다.",
+        "둘은 완전히 동일한 방식이다.",
+        "적응적 센싱 데이터셋은 센서를 사용하지 않는다.",
+        "기존 데이터셋만 실제 환경의 센서 변화를 직접 제어한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자료는 ImageNet-C 등 기존 강건성 데이터셋이 이미지 변환을 주로 사용하는 반면, 적응적 센싱용 데이터셋은 실제 센서가 환경을 어떻게 캡처하는지를 다룬다는 차이를 강조한다."
+    },
+    {
+      "id": 74,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "Lens 기법의 첫 단계로 가장 적절한 것은?",
+      "choices": [
+        "모델을 처음부터 다시 학습한다.",
+        "사용 가능한 센서 파라미터 후보 중 탐색할 후보를 선택한다.",
+        "모든 이미지를 삭제한다.",
+        "정답 label을 사람이 직접 입력한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "Lens는 센서 파라미터 후보 선택, 이미지 캡처, 비전 테스트, 최적 파라미터 선택의 순서로 진행된다."
+    },
+    {
+      "id": 75,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "Lens에서 캡처한 이미지의 품질을 평가하기 위해 사용하는 값은?",
+      "choices": [
+        "파일 이름 길이",
+        "이미지 저장 시간",
+        "모델이 도출한 이미지의 confidence score",
+        "GPU의 온도"
+      ],
+      "answerIndex": 2,
+      "explanation": "Lens는 후보 파라미터로 캡처한 이미지를 모델에 입력하고 confidence score를 이용해 각 후보를 평가한다."
+    },
+    {
+      "id": 76,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "Lens의 최종 센서 파라미터 선택 기준은?",
+      "choices": [
+        "가장 어두운 이미지를 만든 파라미터를 선택한다.",
+        "무조건 Auto-Exposure를 선택한다.",
+        "가장 낮은 confidence score를 선택한다.",
+        "가장 높은 점수를 얻은 파라미터를 선택한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "Lens는 후보 센서 설정별 이미지를 평가한 뒤 점수가 가장 높은 설정을 최종적으로 선택해 추론에 사용한다."
+    },
+    {
+      "id": 77,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "Lens와 Auto-Exposure\\(AE\\) 의 목적 차이로 가장 적절한 것은?",
+      "choices": [
+        "Lens는 모델이 보기 좋은 이미지를 만들고 AE는 사람이 보기 좋은 이미지를 만드는 데 초점을 둔다.",
+        "Lens와 AE는 항상 동일한 센서 설정을 선택한다.",
+        "Lens는 사람의 시각만을 위해 동작한다.",
+        "AE는 AI 모델의 confidence score만을 최대화한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자료는 Lens를 모델 관점의 센서 제어, AE를 사람이 보기 좋은 이미지를 위한 제어로 대비한다."
+    },
+    {
+      "id": 78,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "Lens 성능 결과가 시사하는 내용으로 가장 적절한 것은?",
+      "choices": [
+        "센서 제어는 초거대 모델에서만 효과가 있다.",
+        "모델 학습 데이터 크기와 무관하게 센서 제어만으로도 성능을 향상시킬 수 있다.",
+        "작은 모델에서는 적응적 센싱이 항상 성능을 낮춘다.",
+        "모델 크기가 센서보다 항상 중요하다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료의 Lens 성능 비교에서는 작은 모델에서도 적응적 센싱으로 정확도가 향상되며, 모델만 키우는 것보다 센서가 중요할 수 있음을 강조한다."
+    },
+    {
+      "id": 79,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "EfficientNet-B3와 OpenCLIP-H 비교에서 강조하는 결론은?",
+      "choices": [
+        "큰 모델은 항상 어떤 센서 조건에서도 완벽하다.",
+        "적응적 센싱은 모델 크기가 클수록만 동작한다.",
+        "작은 모델에 적응적 센싱을 적용하면 훨씬 큰 모델의 일반 제어보다 높은 정확도를 보일 수 있다.",
+        "센서 제어와 모델 성능은 관계가 없다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료에서는 약 50M 파라미터의 EfficientNet-B3에 Lens를 적용한 결과가 약 2B 파라미터 OpenCLIP-H의 일반 제어보다 4~10% 높은 정확도를 보였다고 설명한다."
+    },
+    {
+      "id": 80,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "적응적 센싱에서 하나의 고정된 최적 센서 설정을 모든 상황에 사용할 수 없는 이유는?",
+      "choices": [
+        "모든 카메라에는 파라미터가 하나뿐이기 때문이다.",
+        "AI 모델은 이미지 밝기의 영향을 받지 않기 때문이다.",
+        "센서 설정은 추론 결과와 전혀 관계없기 때문이다.",
+        "최적 센서 파라미터가 모델, 환경, 피사체에 따라 달라질 수 있기 때문이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 '그때그때 달라요'라는 표현과 함께 최적 센서 파라미터가 모델·환경·피사체에 따라 달라짐을 강조한다."
+    },
+    {
+      "id": 81,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "도메인 특화 AI 모델 설계에서 전문가 지식이 필요한 이유로 가장 적절한 것은?",
+      "choices": [
+        "도메인별 규칙과 데이터를 정확히 이해하고 이를 모델 설계에 반영해야 하기 때문이다.",
+        "AI는 도메인 데이터를 사용할 수 없기 때문이다.",
+        "전문가 지식은 모델과 무관하기 때문이다.",
+        "전문가가 직접 모든 추론 결과를 입력해야 하기 때문이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "도메인마다 역학적으로 발견된 규칙과 지식이 있으며, 이를 데이터와 모델 설계에 직접 반영하면 불필요한 시행착오를 줄일 수 있다."
+    },
+    {
+      "id": 82,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "CNN의 inductive bias 예시로 자료에서 제시된 내용은?",
+      "choices": [
+        "Random search와 gradient clipping",
+        "Spatial locality와 positional invariance",
+        "Tokenization과 stemming",
+        "SQL join과 indexing"
+      ],
+      "answerIndex": 1,
+      "explanation": "자료는 CNN에 사람의 시각적 인지편향이 반영된 예로 Spatial locality와 Positional invariance를 제시한다."
+    },
+    {
+      "id": 83,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면다원검사(Polysomnography)에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "카메라 한 대로만 수행하는 검사이다.",
+        "수면 중 움직임만 기록하는 검사이다.",
+        "병원에서 여러 생체신호를 기록하여 수면 상태를 분석하는 검사이다.",
+        "AI 모델의 파라미터 수를 측정하는 검사이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "수면다원검사는 EEG, EOG, EMG 등 여러 생체신호를 기록하여 수면 상태를 분석하는 검사로 설명된다."
+    },
+    {
+      "id": 84,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "전문 수면기사가 수면다원검사를 판독할 때 사용하는 기준으로 제시된 것은?",
+      "choices": [
+        "ImageNet label 규칙",
+        "COCO annotation 규칙",
+        "BLEU score",
+        "AASM 채점 규칙"
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 전문 수면기사가 American Academy of Sleep Medicine(AASM)의 채점 규칙을 학습해 수면을 판독한다고 설명한다."
+    },
+    {
+      "id": 85,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "전문 수면기사의 수동 채점 방식의 한계가 아닌 것은?",
+      "choices": [
+        "항상 완전 자동으로 처리된다는 점",
+        "인력 부족",
+        "시간과 비용 부담",
+        "채점자 간 일치율 문제"
+      ],
+      "answerIndex": 0,
+      "explanation": "수동 채점은 전문 인력이 필요하고 시간·비용이 크며 채점자 간 일치율도 완벽하지 않다는 한계가 있다."
+    },
+    {
+      "id": 86,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면다원검사의 '첫날 밤 효과'에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "첫날에는 모든 환자가 REM 수면만 하는 현상이다.",
+        "낯선 장소와 여러 센서 때문에 평소와 다른 수면 상태가 나타날 수 있는 현상이다.",
+        "검사 첫날에는 센서를 사용하지 않는 현상이다.",
+        "수면 시간이 무조건 두 배가 되는 현상이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료는 낯선 검사 환경과 여러 센서 부착으로 평소 수면 상태가 달라지는 샘플 부정확성 문제를 첫날 밤 효과로 설명한다."
+    },
+    {
+      "id": 87,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면다원검사의 '하룻밤 문제'가 의미하는 것은?",
+      "choices": [
+        "하루 동안 검사를 24번 수행해야 한다는 문제이다.",
+        "한밤중에는 센서가 작동하지 않는다는 문제이다.",
+        "평소에는 편안하게 자더라도 하루 검사 결과가 평균적인 수면 패턴을 충분히 대표하지 못할 수 있다는 문제이다.",
+        "모든 환자가 하루만 자면 완치된다는 문제이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 하루 밤의 검사만으로 평소 평균적인 수면 패턴을 놓칠 가능성이 있는 샘플 부족 문제를 지적한다."
+    },
+    {
+      "id": 88,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 진단에서 기본 시간 단위인 epoch은?",
+      "choices": [
+        "1초",
+        "5분",
+        "1시간",
+        "30초"
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 수면단계를 30초 단위의 epoch으로 나누어 판독한다고 설명한다."
+    },
+    {
+      "id": 89,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "자료에서 제시된 5단계 수면 분류에 포함되지 않는 것은?",
+      "choices": [
+        "N4",
+        "Wake",
+        "N1",
+        "REM"
+      ],
+      "answerIndex": 0,
+      "explanation": "자료의 5단계 분류는 Wake, N1, N2, N3, REM이다."
+    },
+    {
+      "id": 90,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "자동 수면단계 진단 AI에서 블랙박스 문제가 중요한 이유는?",
+      "choices": [
+        "의료 분야에서는 설명이 전혀 필요 없기 때문이다.",
+        "의료진이 AI가 특정 수면단계로 판단한 이유를 이해할 수 있어야 하기 때문이다.",
+        "AI는 항상 정답만 출력하기 때문이다.",
+        "수면단계는 생체신호와 무관하기 때문이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "의료진이 AI의 판단을 신뢰하고 활용하려면 예측 근거를 이해할 수 있어야 하므로 설명가능성이 중요하다."
+    },
+    {
+      "id": 91,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 판독에서 멀티모달 시계열 분석이 필요한 이유는?",
+      "choices": [
+        "하나의 이미지 픽셀만 사용하기 때문이다.",
+        "수면단계는 시간적 연속성이 없기 때문이다.",
+        "여러 종류의 생체신호를 종합해 판단하기 때문이다.",
+        "EEG 신호는 사용할 수 없기 때문이다."
+      ],
+      "answerIndex": 2,
+      "explanation": "수면기사는 EEG, EOG, EMG 등 다양한 생체신호를 함께 보고 판단하므로 자동화 모델도 복잡한 멀티모달 시계열 분석이 필요하다."
+    },
+    {
+      "id": 92,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면기사의 핵심 지식을 AI에 주입하기 위해 생체신호를 이미지로 변환한 이유는?",
+      "choices": [
+        "시계열 데이터를 사용할 수 없어서 모두 삭제하기 위해서이다.",
+        "이미지 파일이 항상 시계열보다 작기 때문이다.",
+        "label을 자동 생성하기 위해서이다.",
+        "신호의 파형과 특징을 눈으로 보는 전문가의 판독 방식을 모델 입력에 반영하기 위해서이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 수면기사가 화면에서 생체신호 파형을 눈으로 보고 판독한다는 점에 착안해 시계열 신호를 흑백 이미지로 변환한다."
+    },
+    {
+      "id": 93,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면 시계열 데이터를 이미지로 변환할 때 X축과 Y축의 의미로 옳은 것은?",
+      "choices": [
+        "X축은 시간, Y축은 생체신호 관측 종류이다.",
+        "X축은 클래스, Y축은 epoch 번호이다.",
+        "X축은 모델 크기, Y축은 정확도이다.",
+        "X축은 병원, Y축은 환자 나이이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자료에서 수면 신호 이미지는 시간의 흐름을 X축에, 여러 생체신호 관측 종류를 Y축에 배치한다."
+    },
+    {
+      "id": 94,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 자동 채점 모델에 비전 트랜스포머가 적합하다고 본 이유는?",
+      "choices": [
+        "비전 트랜스포머는 이미지 패치를 사용할 수 없기 때문이다.",
+        "생체신호 이미지에서 시간적·공간적 관계를 함께 탐색할 수 있기 때문이다.",
+        "CNN은 의료 영상에서만 사용할 수 있기 때문이다.",
+        "트랜스포머는 positional embedding을 사용할 수 없기 때문이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료는 spatial locality와 positional invariance가 의료 AI에 항상 적합하지 않을 수 있으며, ViT가 패치와 positional embedding을 통해 생체신호 관계를 탐색하는 데 적합하다고 설명한다."
+    },
+    {
+      "id": 95,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "비전 트랜스포머에서 positional embedding의 역할은?",
+      "choices": [
+        "모든 패치의 위치 정보를 제거한다.",
+        "모델의 label 수를 줄인다.",
+        "패치의 위치 정보를 모델에 제공한다.",
+        "센서의 exposure를 조절한다."
+      ],
+      "answerIndex": 2,
+      "explanation": "ViT는 이미지를 패치로 나눈 뒤 positional embedding을 이용해 각 패치의 위치 정보를 모델에 전달한다."
+    },
+    {
+      "id": 96,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 진단에서 예측 간 맥락을 파악해야 하는 이유는?",
+      "choices": [
+        "각 epoch은 항상 서로 독립이기 때문이다.",
+        "수면단계에는 순서가 존재하지 않기 때문이다.",
+        "한 epoch의 결과만으로 전체 밤의 모든 단계를 확정할 수 있기 때문이다.",
+        "실제 수면은 30초 단위로 완전히 끊기지 않고 연속적인 특성이 있기 때문이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 실제 수면이 epoch 경계에서 단절되지 않으므로 주변 epoch의 결과를 함께 고려해 현재 수면단계를 판단해야 한다고 설명한다."
+    },
+    {
+      "id": 97,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "epoch 맥락을 파악하는 구조에서 각 epoch의 역할로 가장 적절한 것은?",
+      "choices": [
+        "각 epoch의 결과를 상호 연관시켜 최종 수면단계를 판단하는 입력이 된다.",
+        "각 epoch은 서로 완전히 독립적으로만 사용된다.",
+        "epoch은 센서 exposure를 정하는 값이다.",
+        "epoch은 환자의 ID를 의미한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "여러 epoch의 특징과 예측을 함께 분석하여 전후 맥락을 반영한 최종 수면단계 판정을 수행한다."
+    },
+    {
+      "id": 98,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 AI의 설명가능성을 시각화할 때 확인하려는 것은?",
+      "choices": [
+        "GPU 메모리 사용량만 확인한다.",
+        "어느 생체신호의 어느 지점을 보고 수면단계를 판단했는지이다.",
+        "환자의 이름을 예측한다.",
+        "센서의 제조사를 분류한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료의 시각화 예시는 모델이 EEG, EOG 등 어떤 생체신호의 어느 시점에 주목해 Wake, REM, N1~N3를 판단했는지를 보여준다."
+    },
+    {
+      "id": 99,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 예측 결과 보정의 예로 제시된 상황은?",
+      "choices": [
+        "모든 N2를 무조건 Wake로 바꾼다.",
+        "현재 epoch의 결과만 사용해야 한다.",
+        "현재 epoch이 N2로 예측되었더라도 이후 epoch의 맥락을 고려해 REM으로 보정할 수 있다.",
+        "REM은 다른 단계로 절대 보정할 수 없다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 특정 epoch의 단독 예측이 N2였더라도 이후 두 epoch의 결과가 REM인 맥락을 반영해 REM으로 보정하는 예를 보여준다."
+    },
+    {
+      "id": 100,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면 무호흡증에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "수면 중 심박수가 항상 0이 되는 질환이다.",
+        "깨어 있을 때만 발생하는 질환이다.",
+        "수면단계가 N1로만 유지되는 질환이다.",
+        "수면 중 기도가 막혀 호흡이 중단되는 현상이 자주 발생하는 질환이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 수면 무호흡증을 수면 중 기도가 막혀 호흡이 중단되는 현상이 반복되는 질환으로 설명한다."
+    },
+    {
+      "id": 101,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "AHI(Apnea-Hypopnea Index)는 무엇을 기준으로 계산되는가?",
+      "choices": [
+        "무호흡과 저호흡 사건 수를 총 수면 시간으로 나눈 값",
+        "REM 수면 시간만을 총 수면 시간으로 나눈 값",
+        "환자의 나이를 체중으로 나눈 값",
+        "영상 프레임 수를 촬영 시간으로 나눈 값"
+      ],
+      "answerIndex": 0,
+      "explanation": "자료의 도식은 AHI를 (Apneas + Hypopneas) / Total sleep time(hours)로 나타낸다."
+    },
+    {
+      "id": 102,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면 적외선 영상의 장점으로 제시된 것은?",
+      "choices": [
+        "반드시 몸에 센서를 부착해야 한다는 점",
+        "방 안의 전체 영역을 지속적으로 모니터링할 수 있고 비접촉식 센서라는 점",
+        "가려짐이 절대 발생하지 않는다는 점",
+        "영상에서 움직임을 확인할 수 없다는 점"
+      ],
+      "answerIndex": 1,
+      "explanation": "적외선 영상은 방 전체를 지속적으로 관찰할 수 있고 신체에 직접 부착하지 않는 비접촉식 센서라는 장점이 있다."
+    },
+    {
+      "id": 103,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면 적외선 영상의 단점으로 옳은 것은?",
+      "choices": [
+        "센서가 몸에 직접 부착되어 불편하다.",
+        "영상에는 개인정보 문제가 전혀 없다.",
+        "움직임만으로 수면 상태를 감지해야 하며 이불 등에 의해 신체가 가려질 수 있다.",
+        "카메라가 있어도 영상은 생성되지 않는다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 적외선 영상에서 움직임 기반으로 상태를 추론해야 하고, 신체 가림과 영상 개인정보 노출 가능성이 단점이라고 설명한다."
+    },
+    {
+      "id": 104,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "비접촉식 수면 무호흡증 진단 AI의 핵심 요구사항은?",
+      "choices": [
+        "영상을 항상 클라우드에 영구 저장하는 것이다.",
+        "사람이 매 프레임에 label을 입력하는 것이다.",
+        "움직임 정보를 모두 제거하는 것이다.",
+        "수면 중 움직임과 미세 움직임을 분석해 수면 신호를 추출하고 온디바이스에서 처리한 뒤 원본 영상을 삭제하는 것이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 영상에서 수면 신호를 추출하고 카메라에서 직접 온디바이스 AI를 구동해 원본 영상을 삭제하는 방향을 요구사항으로 제시한다."
+    },
+    {
+      "id": 105,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "무호흡/저호흡 이벤트를 영상에서 직접 감지하기 어려운 이유는?",
+      "choices": [
+        "관련 움직임이 매우 미세하기 때문이다.",
+        "무호흡은 항상 큰 전신 움직임을 만든다.",
+        "영상에는 시간 정보가 없기 때문이다.",
+        "카메라는 사람을 촬영할 수 없기 때문이다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자료는 무호흡과 저호흡의 움직임이 너무 미세해 영상만으로 직접 감지하기 어렵다고 설명한다."
+    },
+    {
+      "id": 106,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "호흡 각성(Respiratory Arousal, RA)의 특징으로 가장 적절한 것은?",
+      "choices": [
+        "정상 호흡 중에만 발생하는 고정된 움직임이다.",
+        "기도가 막힌 무호흡 상태가 오래 지속되면 나타날 수 있는 각성 반응이다.",
+        "항상 30분 이상 지속된다.",
+        "수면과 관계없는 카메라 노이즈이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "호흡 각성은 무호흡 상태가 오래 지속되면서 나타나는 각성으로, 무호흡/저호흡 이벤트와 시간적으로 연관된다."
+    },
+    {
+      "id": 107,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "자료에서 무호흡/저호흡 이벤트와 호흡 각성의 시간적 관계로 제시된 것은?",
+      "choices": [
+        "호흡 각성은 이벤트보다 항상 하루 먼저 발생한다.",
+        "둘 사이에는 시간적 관계가 없다.",
+        "호흡 각성은 이벤트가 끝난 직후에 나타날 수 있으며 대부분 짧은 시간 내 종료된다.",
+        "호흡 각성은 무조건 한 시간 이상 지속된다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 무호흡/저호흡 이벤트가 끝난 직후 호흡 각성이 나타날 수 있고 대부분 30초 이내에 종료된다고 설명한다."
+    },
+    {
+      "id": 108,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "영상 기반 무호흡증 진단에서 제안한 핵심 전략은?",
+      "choices": [
+        "무호흡 이벤트를 label 없이 무작위로 생성한다.",
+        "영상의 모든 움직임을 제거한다.",
+        "호흡 각성은 분석에서 제외한다.",
+        "먼저 영상에서 호흡 각성을 감지하고 그 이전 구간에서 무호흡/저호흡 이벤트를 역추적한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "무호흡 움직임 자체는 미세하므로 상대적으로 뚜렷한 호흡 각성을 먼저 감지한 뒤 그 이전 구간에서 원인 이벤트를 찾는 전략을 사용한다."
+    },
+    {
+      "id": 109,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "자발적 각성(Spontaneous Arousal, SA)에 대한 설명으로 가장 적절한 것은?",
+      "choices": [
+        "호흡 문제와 무관하게 외부 환경이나 다른 원인으로 발생할 수 있는 각성이다.",
+        "항상 무호흡 때문에 발생하는 각성이다.",
+        "호흡 각성과 완전히 동일한 개념이다.",
+        "영상에서 절대 움직임을 만들지 않는다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자발적 각성은 호흡 각성과 달리 호흡 문제 외의 다양한 원인으로 발생할 수 있어 두 각성을 구분해야 한다."
+    },
+    {
+      "id": 110,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "호흡 각성과 자발적 각성을 구분해야 하는 이유는?",
+      "choices": [
+        "자발적 각성은 영상에 나타나지 않기 때문이다.",
+        "둘 다 움직임이 크지만 진단 AI는 무호흡과 연관된 호흡 각성을 구분해 가져와야 하기 때문이다.",
+        "호흡 각성은 움직임이 전혀 없기 때문이다.",
+        "두 각성은 항상 같은 원인으로 발생하기 때문이다."
+      ],
+      "answerIndex": 1,
+      "explanation": "자료는 두 종류의 각성 모두 큰 움직임을 보일 수 있으므로, 무호흡과 관련된 호흡 각성을 별도로 구분하는 것이 중요하다고 설명한다."
+    },
+    {
+      "id": 111,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "호흡 각성 시 영상에서 관찰되는 특징으로 제시된 것은?",
+      "choices": [
+        "영상 전체가 완전히 정지한다.",
+        "센서 exposure가 0이 된다.",
+        "각성 시작 전후로 가슴 부위의 강한 움직임이 증가한다.",
+        "환자가 항상 침대에서 일어난다."
+      ],
+      "answerIndex": 2,
+      "explanation": "자료의 시각화에서는 각성 시작 직전부터 가슴 부위의 강한 움직임이 증가하는 패턴을 보여준다."
+    },
+    {
+      "id": 112,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "온디바이스 수면 영상 AI 파이프라인에서 30초 클립에 먼저 수행하는 작업은?",
+      "choices": [
+        "AHI 최종 등급만 즉시 출력",
+        "클라우드에 원본 영상을 업로드",
+        "모든 프레임 삭제",
+        "호흡 각성 감지"
+      ],
+      "answerIndex": 3,
+      "explanation": "파이프라인은 수면 영상을 30초 단위 클립으로 구성하고 경량 비디오 모델을 이용해 먼저 호흡 각성을 감지한다."
+    },
+    {
+      "id": 113,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "호흡 각성 감지에 사용한 경량 비디오 모델로 제시된 것은?",
+      "choices": [
+        "MoViNet",
+        "GPT",
+        "ResNet-152만",
+        "BERT"
+      ],
+      "answerIndex": 0,
+      "explanation": "자료는 30초 클립의 호흡 각성 감지를 위해 경량 비디오 모델인 MoViNet을 사용한다고 설명한다."
+    },
+    {
+      "id": 114,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "호흡 각성 감지 이후 수행하는 과정으로 가장 적절한 것은?",
+      "choices": [
+        "모델을 삭제한다.",
+        "각성 원인을 무호흡/저호흡 사건과 연결해 전체 수면의 이벤트 빈도를 계산한다.",
+        "영상의 모든 시간을 Wake로 분류한다.",
+        "센서 파라미터를 무조건 고정한다."
+      ],
+      "answerIndex": 1,
+      "explanation": "호흡 각성의 원인을 분석해 무호흡/저호흡 이벤트와 연결하고 전체 수면 동안 이벤트 빈도를 계산한다."
+    },
+    {
+      "id": 115,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면 무호흡증 진단 파이프라인에서 이벤트 빈도는 최종적으로 무엇으로 변환되는가?",
+      "choices": [
+        "BLEU",
+        "IoU",
+        "AHI",
+        "F1만"
+      ],
+      "answerIndex": 2,
+      "explanation": "전체 수면의 무호흡/저호흡 이벤트 빈도를 계산한 뒤 Apnea-Hypopnea Index(AHI)로 변환하여 진단에 활용한다."
+    },
+    {
+      "id": 116,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "온디바이스 구현에서 CPU만으로도 30초 이내 추론을 목표로 한 이유는?",
+      "choices": [
+        "GPU를 반드시 제거해야 AI가 동작하기 때문이다.",
+        "30초보다 긴 영상은 존재하지 않기 때문이다.",
+        "클라우드 전송 시간을 늘리기 위해서이다.",
+        "엣지 장치에서 실시간에 가까운 처리가 가능하도록 하기 위해서이다."
+      ],
+      "answerIndex": 3,
+      "explanation": "자료는 엣지 디바이스 CPU에서도 30초 이내 추론이 가능하도록 경량화해 실시간 동작을 목표로 한다."
+    },
+    {
+      "id": 117,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "비접촉식 수면 무호흡증 AI를 온디바이스로 구현할 때 개인정보 측면의 장점은?",
+      "choices": [
+        "영상 데이터를 장치 내부에서 처리하고 원본을 삭제해 외부 전송을 줄일 수 있다.",
+        "모든 영상을 공개 데이터로 변환한다.",
+        "개인정보 보호와는 아무 관계가 없다.",
+        "반드시 클라우드에 영상을 저장해야 한다."
+      ],
+      "answerIndex": 0,
+      "explanation": "자료는 카메라 영상이 민감한 개인정보를 포함할 수 있으므로 엣지 장치에서 처리하고 원본을 삭제하는 구성을 제시한다."
+    },
+    {
+      "id": 118,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "도메인 전문가 지식을 AI에 주입하는 방식의 기대 효과로 가장 적절한 것은?",
+      "choices": [
+        "전문가 없이도 모든 분야에서 동일한 모델을 그대로 사용할 수 있다.",
+        "불필요한 시행착오를 줄이고 도메인에 맞는 효율적인 모델을 설계할 수 있다.",
+        "모델의 입력 데이터를 모두 제거할 수 있다.",
+        "도메인 규칙을 무시할수록 성능이 보장된다."
+      ],
+      "answerIndex": 1,
+      "explanation": "전문가 지식을 데이터 표현과 모델 구조에 반영하면 일반적인 시행착오를 줄이고 해당 분야에 적합한 모델을 효율적으로 설계할 수 있다."
+    },
+    {
+      "id": 119,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "수면단계 자동 채점 사례에서 전문가 지식이 반영된 조합으로 가장 적절한 것은?",
+      "choices": [
+        "텍스트 토큰화 + SQL + 이미지 압축",
+        "센서 exposure 조절 + AHI만 계산",
+        "생체신호의 이미지 변환 + 비전 트랜스포머 + epoch 간 맥락 분석",
+        "클라우드 업로드 + 수동 label 입력"
+      ],
+      "answerIndex": 2,
+      "explanation": "자료는 전문가의 시각적 판독 방식을 반영한 이미지 변환, ViT 기반 생체신호 관계 학습, 여러 epoch의 맥락 분석을 핵심 아이디어로 제시한다."
+    },
+    {
+      "id": 120,
+      "part": "mc",
+      "section": null,
+      "star": 0,
+      "stem": "비접촉식 수면 무호흡증 사례에서 도메인 지식이 반영된 핵심 연결은?",
+      "choices": [
+        "모든 움직임을 무호흡으로 판단한다.",
+        "각성 종류를 구분하지 않는다.",
+        "영상의 밝기만으로 AHI를 계산한다.",
+        "무호흡/저호흡 → 호흡 각성이라는 시간적 관계를 이용해 영상에서 이벤트를 역추적한다."
+      ],
+      "answerIndex": 3,
+      "explanation": "무호흡 자체의 움직임은 미세하다는 도메인 지식과, 이후 호흡 각성이 나타날 수 있다는 관계를 활용해 이벤트를 추적한다."
+    }
+  ],
+  "studyGuide": "",
+  "appendix": ""
+}
