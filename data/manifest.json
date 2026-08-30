@@ -1,68 +1,38 @@
 {
   "chapters": [
     {
-      "id": "1-1",
-      "title": "AI·ML·DL / 데이터와 학습 · 지도학습 / 회귀·분류 / 손실 · 분류 평가 / 일반화·오버피팅 · 검증·교차검증 / 비지도학습 · 핵심 개념 단답형 · 개념 설명·응용 서술형",
+      "id": "최종 범위(핵심키워드)2",
+      "title": "머신러닝 기초와 평가 · RLHF와 최적화 · CNN 계산과 표현 · 파운데이션 모델과 에이전트 · 경량화와 프롬프트 · 언어 모델과 순차 모델 · CNN 구조와 효율 · VLM과 검색 증강 · 평가와 적응 · 배포, 강건성, 에이전트",
       "counts": {
-        "mc": 70,
-        "short": 15,
-        "essay": 15
+        "mc": 60,
+        "short": 0,
+        "essay": 0
       },
       "available": true
     },
     {
-      "id": "1-2",
-      "title": "선형회귀 · 다중선형회귀 · 일반화·다중공선성 · 분류와 로지스틱 회귀 · Odds / Logit / MLE ★ · 신경망 / Shallow Network · 다중 입력/출력·Deep Network · 손실함수 / Gradient Descent / Backpropagation",
+      "id": "최종 범위(핵심키워드)1",
+      "title": "머신러닝·통계 기초 · CNN·비전 · NLP·시퀀스 모델 · LLM 학습·추론·평가 · VLM·멀티모달 · AI Agent · 경량화·배포 · 적응형·도메인 AI",
       "counts": {
-        "mc": 70,
-        "short": 25,
-        "essay": 15
+        "mc": 60,
+        "short": 0,
+        "essay": 0
       },
       "available": true
     },
     {
-      "id": "2-1",
-      "title": "원-핫 인코딩과 워드 임베딩 · 순차적 데이터 · RNN · LSTM · Self-Attention · Transformer · 사전학습 기반 언어모델",
+      "id": "5-2",
+      "title": "On-device AI 하드웨어 및 플랫폼 · 100% 정수연산 양자화 · 분포 이동과 Test-Time Adaptation · CNN 기반 TTA - TENT와 SAR · 비전언어모델 기반 TTA",
       "counts": {
-        "mc": 70,
-        "short": 20,
-        "essay": 10
+        "mc": 120,
+        "short": 0,
+        "essay": 0
       },
       "available": true
     },
     {
-      "id": "2-2",
-      "title": "파운데이션 모델과 거대 언어 모델 · 지시 학습과 선호 학습 · 추론과 디코딩 · 프롬프트 엔지니어링 · 평가, 응용과 한계",
-      "counts": {
-        "mc": 70,
-        "short": 20,
-        "essay": 10
-      },
-      "available": true
-    },
-    {
-      "id": "3-1",
-      "title": "CNN과 FCN 기초 · CNN 구조, 풀링, 수용영역 · AlexNet과 계산 문제 · VGGNet, ResNet, MobileNet · RNN과 LSTM · Attention과 ViT · 활성화, 초기화, 정규화, 학습 전략",
-      "counts": {
-        "mc": 75,
-        "short": 15,
-        "essay": 30
-      },
-      "available": true
-    },
-    {
-      "id": "3-2",
-      "title": "파운데이션 모델의 개념과 학습 패러다임 · 시각언어모델(VLM)과 멀티모달 모델 · sVLM과 온디바이스 모델 · 한국어 sVLM과 토큰화 · LMDeploy와 VLM 배포 · 이미지 파운데이션 모델",
-      "counts": {
-        "mc": 59,
-        "short": 15,
-        "essay": 10
-      },
-      "available": true
-    },
-    {
-      "id": "4-1",
-      "title": "Post-training (Instruction-tuning · RLHF · DPO · RLVR) · Retrieval-Augmented LM (Information Retrieval · Retriever · RAG) · LLMs with Tool Usage (LLM Agent · Tool Learning · MCP) · AI Agents & LangChain (환경 이해 · Planning · LangChain)",
+      "id": "5-1",
+      "title": "수 체계와 진법 변환 · 부호 있는 정수와 비트 폭 확장 · 고정소수점 수 체계 · 부동소수점 기본 개념 · IEEE 754 Single-Precision · IEEE 754 Double-Precision 및 종합 · 고정소수점·부동소수점 연산 · 모델 경량화와 양자화 · 가지치기와 지식 증류",
       "counts": {
         "mc": 100,
         "short": 0,
@@ -81,8 +51,8 @@
       "available": true
     },
     {
-      "id": "5-1",
-      "title": "수 체계와 진법 변환 · 부호 있는 정수와 비트 폭 확장 · 고정소수점 수 체계 · 부동소수점 기본 개념 · IEEE 754 Single-Precision · IEEE 754 Double-Precision 및 종합 · 고정소수점·부동소수점 연산 · 모델 경량화와 양자화 · 가지치기와 지식 증류",
+      "id": "4-1",
+      "title": "Post-training (Instruction-tuning · RLHF · DPO · RLVR) · Retrieval-Augmented LM (Information Retrieval · Retriever · RAG) · LLMs with Tool Usage (LLM Agent · Tool Learning · MCP) · AI Agents & LangChain (환경 이해 · Planning · LangChain)",
       "counts": {
         "mc": 100,
         "short": 0,
@@ -91,22 +61,12 @@
       "available": true
     },
     {
-      "id": "5-2",
-      "title": "On-device AI 하드웨어 및 플랫폼 · 100% 정수연산 양자화 · 분포 이동과 Test-Time Adaptation · CNN 기반 TTA - TENT와 SAR · 비전언어모델 기반 TTA",
+      "id": "중간 범위 3",
+      "title": "AI·ML·DL / 데이터와 학습 · 지도학습 / 회귀·분류 / 손실 · 분류 평가 / 일반화·오버피팅 · 검증·교차검증 / 비지도학습 · 선형회귀 · 다중선형회귀 · 일반화·다중공선성 · 분류와 로지스틱 회귀 · Odds / Logit / MLE · 신경망 / Shallow Network · 다중 입력/출력 · Deep Network · 손실함수 / Gradient Descent / Backpropagation · 원-핫 인코딩과 워드 임베딩 · 순차적 데이터 · RNN · LSTM · Self-Attention · Transformer · 사전학습 기반 언어모델 · 파운데이션 모델과 거대 언어 모델 · 지시 학습과 선호 학습 · 추론과 디코딩 · 프롬프트 엔지니어링 · 평가, 응용과 한계 · CNN과 FCN 기초 · CNN 구조, 풀링, 수용영역 · AlexNet과 계산 문제 · VGGNet, ResNet, MobileNet · RNN과 LSTM · Attention과 ViT · 활성화, 초기화, 정규화, 학습 전략 · 파운데이션 모델의 개념과 학습 패러다임 · 시각언어모델(VLM)과 멀티모달 모델 · sVLM과 온디바이스 모델 · 한국어 sVLM과 토큰화 · LMDeploy와 VLM 배포 · 이미지 파운데이션 모델",
       "counts": {
-        "mc": 120,
+        "mc": 111,
         "short": 0,
         "essay": 0
-      },
-      "available": true
-    },
-    {
-      "id": "중간 범위 1",
-      "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
-      "counts": {
-        "mc": 64,
-        "short": 20,
-        "essay": 12
       },
       "available": true
     },
@@ -121,22 +81,72 @@
       "available": true
     },
     {
-      "id": "핵심키워드",
-      "title": "머신러닝·통계 기초 · CNN·비전 · NLP·시퀀스 모델 · LLM 학습·추론·평가 · VLM·멀티모달 · AI Agent · 경량화·배포 · 적응형·도메인 AI",
+      "id": "중간 범위 1",
+      "title": "지도학습·통계 기초 · CNN과 비전 구조 · 시퀀스·어텐션·언어모델 · LLM 학습과 정렬 · 멀티모달·생성 모델",
       "counts": {
-        "mc": 60,
-        "short": 0,
-        "essay": 0
+        "mc": 64,
+        "short": 20,
+        "essay": 12
       },
       "available": true
     },
     {
-      "id": "중간 범위 3",
-      "title": "AI·ML·DL / 데이터와 학습 · 지도학습 / 회귀·분류 / 손실 · 분류 평가 / 일반화·오버피팅 · 검증·교차검증 / 비지도학습 · 선형회귀 · 다중선형회귀 · 일반화·다중공선성 · 분류와 로지스틱 회귀 · Odds / Logit / MLE · 신경망 / Shallow Network · 다중 입력/출력 · Deep Network · 손실함수 / Gradient Descent / Backpropagation · 원-핫 인코딩과 워드 임베딩 · 순차적 데이터 · RNN · LSTM · Self-Attention · Transformer · 사전학습 기반 언어모델 · 파운데이션 모델과 거대 언어 모델 · 지시 학습과 선호 학습 · 추론과 디코딩 · 프롬프트 엔지니어링 · 평가, 응용과 한계 · CNN과 FCN 기초 · CNN 구조, 풀링, 수용영역 · AlexNet과 계산 문제 · VGGNet, ResNet, MobileNet · RNN과 LSTM · Attention과 ViT · 활성화, 초기화, 정규화, 학습 전략 · 파운데이션 모델의 개념과 학습 패러다임 · 시각언어모델(VLM)과 멀티모달 모델 · sVLM과 온디바이스 모델 · 한국어 sVLM과 토큰화 · LMDeploy와 VLM 배포 · 이미지 파운데이션 모델",
+      "id": "3-2",
+      "title": "파운데이션 모델의 개념과 학습 패러다임 · 시각언어모델(VLM)과 멀티모달 모델 · sVLM과 온디바이스 모델 · 한국어 sVLM과 토큰화 · LMDeploy와 VLM 배포 · 이미지 파운데이션 모델",
       "counts": {
-        "mc": 111,
-        "short": 0,
-        "essay": 0
+        "mc": 59,
+        "short": 15,
+        "essay": 10
+      },
+      "available": true
+    },
+    {
+      "id": "3-1",
+      "title": "CNN과 FCN 기초 · CNN 구조, 풀링, 수용영역 · AlexNet과 계산 문제 · VGGNet, ResNet, MobileNet · RNN과 LSTM · Attention과 ViT · 활성화, 초기화, 정규화, 학습 전략",
+      "counts": {
+        "mc": 75,
+        "short": 15,
+        "essay": 30
+      },
+      "available": true
+    },
+    {
+      "id": "2-2",
+      "title": "파운데이션 모델과 거대 언어 모델 · 지시 학습과 선호 학습 · 추론과 디코딩 · 프롬프트 엔지니어링 · 평가, 응용과 한계",
+      "counts": {
+        "mc": 70,
+        "short": 20,
+        "essay": 10
+      },
+      "available": true
+    },
+    {
+      "id": "2-1",
+      "title": "원-핫 인코딩과 워드 임베딩 · 순차적 데이터 · RNN · LSTM · Self-Attention · Transformer · 사전학습 기반 언어모델",
+      "counts": {
+        "mc": 70,
+        "short": 20,
+        "essay": 10
+      },
+      "available": true
+    },
+    {
+      "id": "1-2",
+      "title": "선형회귀 · 다중선형회귀 · 일반화·다중공선성 · 분류와 로지스틱 회귀 · Odds / Logit / MLE ★ · 신경망 / Shallow Network · 다중 입력/출력·Deep Network · 손실함수 / Gradient Descent / Backpropagation",
+      "counts": {
+        "mc": 70,
+        "short": 25,
+        "essay": 15
+      },
+      "available": true
+    },
+    {
+      "id": "1-1",
+      "title": "AI·ML·DL / 데이터와 학습 · 지도학습 / 회귀·분류 / 손실 · 분류 평가 / 일반화·오버피팅 · 검증·교차검증 / 비지도학습 · 핵심 개념 단답형 · 개념 설명·응용 서술형",
+      "counts": {
+        "mc": 70,
+        "short": 15,
+        "essay": 15
       },
       "available": true
     }

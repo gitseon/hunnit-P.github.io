@@ -550,7 +550,15 @@ def main():
                 {"id": cid, "title": "", "counts": {"mc": 0, "short": 0, "essay": 0}, "available": False}
             )
 
-    order = {cid: i for i, cid in enumerate(planned)}
+    # 화면에서는 최신 범위부터 볼 수 있도록 다음 기본 순서를 역순으로 노출한다.
+    # 1-1~3-2 → 중간 범위 1~3 → 4-1~5-2
+    display_order = [
+        "1-1", "1-2", "2-1", "2-2", "3-1", "3-2",
+        "중간 범위 1", "중간 범위 2", "중간 범위 3",
+        "4-1", "4-2", "5-1", "5-2",
+        "최종 범위(핵심키워드)1", "최종 범위(핵심키워드)2",
+    ]
+    order = {cid: i for i, cid in enumerate(reversed(display_order))}
     manifest_chapters.sort(key=lambda c: order.get(c["id"], 999))
 
     manifest = {"chapters": manifest_chapters}
