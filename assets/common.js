@@ -53,6 +53,9 @@ function renderMath(el) {
     delimiters: [
       { left: "\\[", right: "\\]", display: true },
       { left: "\\(", right: "\\)", display: false },
+      // 핵심키워드 자료처럼 일반 Markdown의 $...$ 표기를 사용한
+      // 인라인 수식도 함께 렌더링한다.
+      { left: "$", right: "$", display: false },
     ],
     throwOnError: false,
   });

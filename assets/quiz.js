@@ -5,7 +5,10 @@ const PART_META = {
 };
 
 function storageKey(chapterId) {
-  return `quiz-progress:${chapterId}`;
+  // 핵심키워드는 단답형에서 객관식으로 개편되어 예전 저장 기록과
+  // 정답 위치가 호환되지 않으므로 별도 버전 키를 사용한다.
+  const version = chapterId === "핵심키워드" ? ":v2" : "";
+  return `quiz-progress:${chapterId}${version}`;
 }
 
 function loadProgress(chapterId) {
