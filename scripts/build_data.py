@@ -493,7 +493,10 @@ def main():
 
     for problem_path in problem_files:
         chapter_id_raw = _nfc(problem_path.name).replace("문제.md", "")
-        chapter_id = chapter_id_raw.replace("_", "-")
+        # `핵심키워드_문제.md`처럼 가독성을 위해 문제/해설 앞에 구분자를
+        # 둔 파일은 그 구분자가 챕터 ID에 남지 않도록 한다. 중간의 밑줄은
+        # 기존 규칙대로 URL용 하이픈으로 바꾼다.
+        chapter_id = chapter_id_raw.rstrip("_- ").replace("_", "-")
         answer_path = files_by_nfc_name.get(_nfc(f"{chapter_id_raw}해설.md"))
         if answer_path is None:
             print(f"[skip] {chapter_id}: 해설 파일 없음 ({chapter_id_raw}해설.md)")
